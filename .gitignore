@@ -1,5 +1,8 @@
+#ignoring specific directires
 /bin
 /obj
+
+#ignoring specific file
 DotAgro.csproj
 DotAgro.csproj.user
 DotAgro.sln
