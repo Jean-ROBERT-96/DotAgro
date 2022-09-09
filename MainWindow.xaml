@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotAgro"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="DotAggro : Recherche de salarié" Height="550" Width="750" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/images/list.png">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Background="DarkMagenta">
+            <TextBox x:Name="SearchBox" Margin="10"/>
+            <ComboBox x:Name="HeadquartersSelect" Margin="10"/>
+            <ComboBox x:Name="ServicesSelect" Margin="10"/>
+            <Button x:Name="SearchButton" Margin="10" Content="Recherche"/>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel VerticalAlignment="Bottom" Grid.Row="1">
+                <Button x:Name="Reload" Margin="10" Content="Actualiser"/>
+            </StackPanel>
+        </Grid>
+        <Frame x:Name="ScreenSalary">
+            
+        </Frame>
     </Grid>
 </Window>
