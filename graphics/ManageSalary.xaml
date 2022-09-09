@@ -1,0 +1,48 @@
+﻿<Window x:Class="DotAgro.graphics.ManageSalary"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DotAgro.graphics"
+        mc:Ignorable="d"
+        Title="Salary" Height="350" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+    
+    <Grid Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="125"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBox x:Name="firstName" Margin="10"/>
+                <TextBox x:Name="lastName" Margin="10"/>
+                <ComboBox x:Name="genderSelect" Margin="10"/>
+                <TextBox x:Name="email" Margin="10"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Image x:Name="ViewImage"  Margin="10" Width="130" Height="130"/>
+                <Button x:Name="UploadFile" Margin="10" Content="Ajouter une image..."/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBox x:Name="phone" Margin="10"/>
+                <ComboBox x:Name="selectServices" Margin="10"/>
+                <Button x:Name="Delete" Margin="10" Width="100" Content="Supprimer"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBox x:Name="mobilePhone" Margin="10"/>
+                <ComboBox x:Name="selectHeadquarters" Margin="10"/>
+                <Button x:Name="Add" Margin="10" Width="100" Content="Ajouter"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

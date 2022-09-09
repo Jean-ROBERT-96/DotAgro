@@ -1,0 +1,18 @@
+﻿<Page x:Class="DotAgro.graphics.ManageFrame"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DotAgro.graphics"
+      mc:Ignorable="d" 
+      d:DesignHeight="50" d:DesignWidth="380"
+      Title="ManageFrame">
+
+    <Grid Background="Gray">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="infoManage" Background="White" Margin="10" Height="20" Width="210"/>
+            <Button x:Name="EditManage" Margin="10" Height="20" Content="Modifier"/>
+            <Button x:Name="DeleteManage" Margin="10" Height="20" Content="Supprimer"/>
+        </StackPanel>
+    </Grid>
+</Page>

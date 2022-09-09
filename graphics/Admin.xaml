@@ -1,0 +1,36 @@
+﻿<Window x:Class="DotAgro.graphics.Admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DotAgro.graphics"
+        mc:Ignorable="d"
+        Title="DotAggro Admin : Gestion de salarié" Height="550" Width="800" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/images/list.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Background="DarkMagenta">
+            <TextBox x:Name="SearchBox" Margin="10"/>
+            <ComboBox x:Name="HeadquartersSelect" Margin="10"/>
+            <ComboBox x:Name="ServicesSelect" Margin="10"/>
+            <Button x:Name="SearchButton" Margin="10" Content="Recherche"/>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel VerticalAlignment="Bottom" Grid.Row="1">
+                <Button x:Name="ManageServices" Margin="10" Content="Gérer les services"/>
+                <Button x:Name="ManageHeadquarters" Margin="10" Content="Gérer les sites"/>
+                <Button x:Name="AddSalary" Margin="10" Content="Ajouter un salarié"/>
+                <Button x:Name="Reload" Margin="10" Content="Actualiser"/>
+            </StackPanel>
+        </Grid>
+        <Frame x:Name="ScreenSalary">
+
+        </Frame>
+    </Grid>
+</Window>
