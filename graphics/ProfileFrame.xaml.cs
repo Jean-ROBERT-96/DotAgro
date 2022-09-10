@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DotAgro.entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,8 @@ namespace DotAgro.graphics
     /// </summary>
     public partial class ProfileFrame : Page
     {
+        Salaryman salary;
+
         public ProfileFrame()
         {
             InitializeComponent();
