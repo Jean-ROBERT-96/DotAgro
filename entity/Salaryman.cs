@@ -6,28 +6,28 @@ using System.Threading.Tasks;
 
 namespace DotAgro.entity
 {
-    internal class Salaryman
+    public class Salaryman
     {
-        int id;
+        static int id_salary;
+        string imageLink;
         public string lastName { get; set; }
         public string firstName { get; set; }
         public char gender { get; set; }
         public string phone { get; set; }
         public string mobilePhone { get; set; }
         public string mail { get; set; }
-        public Services service { get; set; }
-        public Headquarters headquarter { get; set; }
+        public int id_headquarter { get; set; }
+        public int id_service { get; set; }
 
-        public Salaryman(int id, string lastName, string firstName, char gender, string mobilePhone, string mail, Services service, Headquarters headquarter, string phone = null)
+        public Salaryman(string imageLink, string lastName, string firstName, char gender, string mobilePhone, string mail, string phone = null)
         {
-            this.id = id;
+            id_salary++;
+            this.imageLink = imageLink;
             this.lastName = lastName;
             this.firstName = firstName;
             this.gender = gender;
             this.mobilePhone = mobilePhone;
             this.mail = mail;
-            this.service = service;
-            this.headquarter = headquarter;
             this.phone = phone;
         }
     }

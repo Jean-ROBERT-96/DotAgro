@@ -26,7 +26,7 @@
                 <Button x:Name="Reload" Margin="10" Content="Actualiser"/>
             </StackPanel>
         </Grid>
-        <Frame x:Name="ScreenSalary">
+        <Frame x:Name="ScreenSalary" Height="120" Width="525"  NavigationUIVisibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center">
             
         </Frame>
     </Grid>

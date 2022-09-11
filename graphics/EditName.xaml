@@ -10,7 +10,7 @@
         <StackPanel VerticalAlignment="Center">
             <Label Content="Choisissez un nouveau nom :"/>
             <TextBox x:Name="nameEdit" Margin="10"/>
-            <Button x:Name="EditName" Margin="10" Content="Modifier"/>
+            <Button x:Name="EditNamed" Margin="10" Content="Modifier"/>
         </StackPanel>
     </Grid>
 </Window>

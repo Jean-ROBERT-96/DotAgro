@@ -9,11 +9,13 @@ namespace DotAgro.entity
 {
     internal class Services : SalaryManageable
     {
+        static int id_service;
         public string name { get; set; }
         List<Salaryman> salaryList = new List<Salaryman>();
 
         public Services(string name)
         {
+            id_service++;
             this.name = name;
         }
 

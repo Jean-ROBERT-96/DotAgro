@@ -9,11 +9,13 @@ namespace DotAgro.entity
 {
     internal class Headquarters : SalaryManageable
     {
+        static int id_headquarter;
         public string name { get; set; }
         List<Salaryman> salaryList = new List<Salaryman>();
 
         public Headquarters(string name)
         {
+            id_headquarter++;
             this.name = name;
         }
 

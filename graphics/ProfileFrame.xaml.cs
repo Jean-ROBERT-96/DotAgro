@@ -23,9 +23,32 @@ namespace DotAgro.graphics
     {
         Salaryman salary;
 
-        public ProfileFrame()
+        public ProfileFrame(Salaryman s)
         {
             InitializeComponent();
+            salary = s;
+            Display();
+        }
+
+        void Display()
+        {
+            name.Text = $"{salary.firstName} {salary.lastName}";
+            email.Text = salary.mail;
+            phone.Text = salary.mobilePhone;
+
+            if(salary.gender == 'M')
+            {
+                gender.Text = "Homme";
+            }
+            else if(salary.gender == 'M')
+            {
+                gender.Text ="Femme";
+            }
+        }
+
+        public void SetSalary(Salaryman s)
+        {
+            salary = s;
         }
     }
 }
