@@ -22,11 +22,13 @@ namespace DotAgro.graphics
     public partial class ProfileFrame : Page
     {
         Salaryman salary;
+        BitmapImage image;
 
         public ProfileFrame(Salaryman s)
         {
             InitializeComponent();
             salary = s;
+            image = new BitmapImage();
             Display();
         }
 
@@ -44,6 +46,11 @@ namespace DotAgro.graphics
             {
                 gender.Text ="Femme";
             }
+            image.BeginInit();
+            image.UriSource = new Uri(salary.imageLink);
+            image.EndInit();
+
+            imageBox.Source = image;
         }
 
         public void SetSalary(Salaryman s)

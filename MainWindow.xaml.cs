@@ -21,23 +21,29 @@ namespace DotAgro
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IDisplayable
+    public partial class MainWindow : Window
     {
-        public List<ProfileFrame> profileFrames { get; }
-        
+        List<ProfileFrame> profileFrames;
+        List<Frame> newFrame;
 
         public MainWindow()
         {
             InitializeComponent();
+            profileFrames = new List<ProfileFrame>();
+            newFrame = new List<Frame>();
             Initialization();
         }
 
         public void Initialization()
         {
-            //ProfileFrame frame = new ProfileFrame(new Salaryman("image", "Dautaj", "Albi", 'M', "0610101010", "aclain@cesi.fr"));
-            //profileFrames.Add(new ProfileFrame(new Salaryman("image", "Dautaj", "Albi", 'M', "0610101010", "aclain@cesi.fr")));
-            //ScreenSalary.Navigate(profileFrames[0]);
-            ScreenSalary.Content = new ProfileFrame(new Salaryman("image", "Dautaj", "Albi", 'M', "0610101010", "aclain@cesi.fr"));
+            profileFrames.Add(new ProfileFrame(new Salaryman("https://tiermaker.com/images/templates/overwatch-2-designs-486615/4866151626673279.png", "Dautaj", "Albi", 'M', "0610101010", "aclain@cesi.fr")));
+            profileFrames.Add(new ProfileFrame(new Salaryman("https://jf-staeulalia.pt/img/other/76/collection-epic-face-background-18.png", "Normand", "Théo", 'M', "0610101010", "aclain@cesi.fr")));
+            profileFrames.Add(new ProfileFrame(new Salaryman("https://jf-staeulalia.pt/img/other/76/collection-epic-face-background-18.png", "Robert", "Jean", 'M', "0610101010", "aclain@cesi.fr")));
+
+            foreach(ProfileFrame p in profileFrames)
+            {
+                ScreenSalary.Children.Add(new Frame() {Margin = new Thickness(2, 5, 2, 5), Height = 120, Width = 525, Content = p });
+            }
         }
     }
 }

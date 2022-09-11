@@ -14,16 +14,16 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Image Margin="10"/>
+        <Image x:Name="imageBox" Margin="10"/>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-            <TextBlock x:Name="name" Height="15" Background="White" Margin="10" FontSize="10"/>
-            <TextBlock x:Name="email" Height="15" Background="White" Margin="10"/>
-            <TextBlock x:Name="phone" Height="15" Background="White" Margin="10"/>
+            <TextBlock x:Name="name" Height="15" Background="White" Margin="10" FontSize="13" FontWeight="Bold" />
+            <TextBlock x:Name="email" Height="15" Background="White" Margin="10" FontSize="13"/>
+            <TextBlock x:Name="phone" Height="15" Background="White" Margin="10" FontSize="13"/>
         </StackPanel>
         <StackPanel Grid.Column="2" VerticalAlignment="Center">
-            <TextBlock x:Name="gender" Height="15" Background="White" Margin="10"/>
-            <TextBlock x:Name="service" Height="15" Background="White" Margin="10"/>
-            <TextBlock x:Name="site" Height="15" Background="White" Margin="10"/>
+            <TextBlock x:Name="gender" Height="15" Background="White" Margin="10" FontSize="13"/>
+            <TextBlock x:Name="service" Height="15" Background="White" Margin="10" FontSize="13"/>
+            <TextBlock x:Name="site" Height="15" Background="White" Margin="10" FontSize="13"/>
         </StackPanel>
     </Grid>
 </Page>

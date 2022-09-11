@@ -9,7 +9,7 @@ namespace DotAgro.entity
     public class Salaryman
     {
         static int id_salary;
-        string imageLink;
+        public string imageLink { get; set; }
         public string lastName { get; set; }
         public string firstName { get; set; }
         public char gender { get; set; }
