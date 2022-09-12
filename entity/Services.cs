@@ -7,37 +7,15 @@ using System.Threading.Tasks;
 
 namespace DotAgro.entity
 {
-    internal class Services : SalaryManageable
+    public class Services
     {
-        static int id_service;
+        public int id_service { get; init; }
         public string name { get; set; }
-        List<Salaryman> salaryList = new List<Salaryman>();
 
-        public Services(string name)
+        public Services(int id_service, string name)
         {
-            id_service++;
+            this.id_service = id_service;
             this.name = name;
-        }
-
-        public override void AddSalaryman(Salaryman s)
-        {
-            salaryList.Add(s);
-        }
-
-        public override void UpdateSalaryman(Salaryman s)
-        {
-            salaryList.Remove(s);
-            salaryList.Add(s);
-        }
-
-        public override void DeleteSalaryman(Salaryman s)
-        {
-            salaryList.Remove(s);
-        }
-
-        public override void SearchSalaryman(Salaryman s)
-        {
-            throw new NotImplementedException();
         }
     }
 }

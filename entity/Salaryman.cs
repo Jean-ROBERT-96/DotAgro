@@ -19,7 +19,7 @@ namespace DotAgro.entity
         public int id_headquarter { get; set; }
         public int id_service { get; set; }
 
-        public Salaryman(string imageLink, string lastName, string firstName, char gender, string mobilePhone, string mail, string phone = null)
+        public Salaryman(string imageLink, string lastName, string firstName, char gender, string mobilePhone, string mail, int id_headquarter, int id_service, string phone = null)
         {
             id_salary++;
             this.imageLink = imageLink;
@@ -28,6 +28,8 @@ namespace DotAgro.entity
             this.gender = gender;
             this.mobilePhone = mobilePhone;
             this.mail = mail;
+            this.id_headquarter = id_headquarter;
+            this.id_service = id_service;
             this.phone = phone;
         }
     }

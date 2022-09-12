@@ -12,10 +12,10 @@
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="1" Background="DarkMagenta">
-            <TextBox x:Name="SearchBox" Margin="10"/>
+            <TextBox x:Name="SearchBox" Margin="10" Text="Recherche par nom..."/>
             <ComboBox x:Name="HeadquartersSelect" Margin="10"/>
             <ComboBox x:Name="ServicesSelect" Margin="10"/>
-            <Button x:Name="SearchButton" Margin="10" Content="Recherche"/>
+            <Button x:Name="SearchButton" Margin="10" Content="Recherche" Click="SearchButton_Click"/>
         </StackPanel>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -23,14 +23,11 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel VerticalAlignment="Bottom" Grid.Row="1">
-                <Button x:Name="Reload" Margin="10" Content="Actualiser"/>
+                <Button x:Name="Reload" Margin="10" Content="Actualiser" Click="Reload_Click"/>
             </StackPanel>
         </Grid>
         <ScrollViewer>
             <StackPanel x:Name="ScreenSalary" HorizontalAlignment="Center" Width="525"/>
         </ScrollViewer>
-        
-
-
     </Grid>
 </Window>
