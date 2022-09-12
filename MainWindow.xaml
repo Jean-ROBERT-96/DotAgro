@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DotAgro"
         mc:Ignorable="d"
         Title="DotAggro : Recherche de salarié" Height="550" Width="750" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/images/list.png">
-    <Grid>
+    <Grid KeyDown="AdminMode_KeyDown">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="200"/>

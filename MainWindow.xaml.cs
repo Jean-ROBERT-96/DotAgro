@@ -71,10 +71,9 @@ namespace DotAgro
         {
             var searchProfile = new List<ProfileFrame>();
             searchProfile = profileFrames.Where(pf => 
-            (pf.salary.lastName.Equals(SearchBox.Text, StringComparison.OrdinalIgnoreCase)) &&
+            (pf.salary.lastName.Equals(SearchBox.Text, StringComparison.OrdinalIgnoreCase)) ||
             (pf.salary.id_headquarter.Equals(int.Parse(((ComboBoxItem)HeadquartersSelect.SelectedItem).Tag.ToString()))) &&
-            (pf.salary.id_service.Equals(int.Parse(((ComboBoxItem)ServicesSelect.SelectedItem).Tag.ToString())))
-            ).ToList();
+            (pf.salary.id_service.Equals(int.Parse(((ComboBoxItem)ServicesSelect.SelectedItem).Tag.ToString())))).ToList();
 
             ScreenSalary.Children.Clear();
             foreach(ProfileFrame p in searchProfile)
@@ -90,6 +89,15 @@ namespace DotAgro
             headquartersList.Clear();
             servicesList.Clear();
             Initialization();
+        }
+
+        void AdminMode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.F8)
+            {
+                Login admin = new Login();
+                admin.Show();
+            }
         }
     }
 }
