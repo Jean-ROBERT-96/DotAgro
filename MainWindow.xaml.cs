@@ -93,7 +93,7 @@ namespace DotAgro
 
         void AdminMode_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.F8)
+            if(Keyboard.IsKeyDown(Key.F8) && Keyboard.IsKeyDown(Key.LeftCtrl))
             {
                 Login admin = new Login();
                 admin.Show();
