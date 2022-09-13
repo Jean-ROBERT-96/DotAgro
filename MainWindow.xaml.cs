@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 
 namespace DotAgro
 {
@@ -26,6 +27,7 @@ namespace DotAgro
         List<ProfileFrame> profileFrames;
         List<Headquarters> headquartersList;
         List<Services> servicesList;
+        
 
         public MainWindow()
         {
@@ -35,20 +37,51 @@ namespace DotAgro
             servicesList = new List<Services>();
             Initialization();
         }
+        public void PreInitialization()
+        {
+            MySqlConnection connect = new MySqlConnection("server=localhost;database=dotagro;uid=root;pwd=\"\";");
+            MySqlDataReader reader;
+            MySqlCommand commandHeadquarters = new MySqlCommand("SELECT * FROM headquarters", connect);
+            MySqlCommand commandServices = new MySqlCommand("SELECT * FROM services", connect);
+            MySqlCommand commandSalaryman = new MySqlCommand("SELECT * FROM salaryman", connect);
+
+            try
+            {
+                connect.Open();
+                commandHeadquarters.Prepare();
+                reader = commandHeadquarters.ExecuteReader();
+                while(reader.Read())
+                {
+                    headquartersList.Add(new Headquarters(Convert.ToInt32(reader["id_headquarters"]), Convert.ToString(reader["name"])));
+                }
+                reader.Close();
+
+                commandServices.Prepare();
+                reader = commandServices.ExecuteReader();
+                while (reader.Read())
+                {
+                    servicesList.Add(new Services(Convert.ToInt32(reader["id_services"]), Convert.ToString(reader["name"])));
+                }
+                reader.Close();
+
+                commandSalaryman.Prepare();
+                reader = commandSalaryman.ExecuteReader();
+                while (reader.Read())
+                {
+                    profileFrames.Add(new ProfileFrame(new Salaryman(Convert.ToInt32(reader["id_salary"]), Convert.ToString(reader["image_link"]), Convert.ToString(reader["lastName"]), Convert.ToString(reader["firstName"]), Convert.ToChar(reader["gender"]), Convert.ToString(reader["mobile_phone"]), Convert.ToString(reader["mail"]), Convert.ToInt32(reader["id_headquarters"]), Convert.ToInt32(reader["id_services"]), Convert.ToString(reader["phone"])), headquartersList, servicesList));
+                }
+                reader.Close();
+                connect.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show($"La connexion a échoué : {e}", "Erreur de connexion", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
         public void Initialization()
         {
-            
-            headquartersList.Add(new Headquarters(1, "Bordeaux"));
-            headquartersList.Add(new Headquarters(2, "Toulouse"));
-            headquartersList.Add(new Headquarters(3, "Lyon"));
-            servicesList.Add(new Services(1, "Informatique"));
-            servicesList.Add(new Services(2, "Comptabilité"));
-            servicesList.Add(new Services(3, "Direction"));
-            profileFrames.Add(new ProfileFrame(new Salaryman("https://tiermaker.com/images/templates/overwatch-2-designs-486615/4866151626673279.png", "Dautaj", "Albi", 'M', "0610101010", "aclain@cesi.fr", 2, 2), headquartersList, servicesList));
-            profileFrames.Add(new ProfileFrame(new Salaryman("https://jf-staeulalia.pt/img/other/76/collection-epic-face-background-18.png", "Normand", "Théo", 'M', "0610101010", "aclain@cesi.fr", 1, 1), headquartersList, servicesList));
-            profileFrames.Add(new ProfileFrame(new Salaryman("https://jf-staeulalia.pt/img/other/76/collection-epic-face-background-18.png", "Robert", "Jean", 'M', "0610101010", "aclain@cesi.fr", 3, 2), headquartersList, servicesList));
-
+            PreInitialization();
             foreach (ProfileFrame p in profileFrames)
             {
                 ScreenSalary.Children.Add(new Frame() {Margin = new Thickness(2, 5, 2, 5), Height = 120, Width = 525, Content = p });
@@ -71,9 +104,9 @@ namespace DotAgro
         {
             var searchProfile = new List<ProfileFrame>();
             searchProfile = profileFrames.Where(pf => 
-            (pf.salary.lastName.Equals(SearchBox.Text, StringComparison.OrdinalIgnoreCase)) ||
-            (pf.salary.id_headquarter.Equals(int.Parse(((ComboBoxItem)HeadquartersSelect.SelectedItem).Tag.ToString()))) &&
-            (pf.salary.id_service.Equals(int.Parse(((ComboBoxItem)ServicesSelect.SelectedItem).Tag.ToString())))).ToList();
+            (pf.salary.lastName.Equals(SearchBox.Text, StringComparison.OrdinalIgnoreCase)) &&
+            (pf.salary.id_headquarter.Equals(Convert.ToInt32(((ComboBoxItem)HeadquartersSelect.SelectedItem).Tag))) &&
+            (pf.salary.id_service.Equals(Convert.ToInt32(((ComboBoxItem)ServicesSelect.SelectedItem).Tag)))).ToList();
 
             ScreenSalary.Children.Clear();
             foreach(ProfileFrame p in searchProfile)

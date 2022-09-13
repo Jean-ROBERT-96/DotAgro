@@ -8,7 +8,7 @@ namespace DotAgro.entity
 {
     public class Salaryman
     {
-        static int id_salary;
+        public int id_salary { get; init; }
         public string imageLink { get; set; }
         public string lastName { get; set; }
         public string firstName { get; set; }
@@ -19,9 +19,9 @@ namespace DotAgro.entity
         public int id_headquarter { get; set; }
         public int id_service { get; set; }
 
-        public Salaryman(string imageLink, string lastName, string firstName, char gender, string mobilePhone, string mail, int id_headquarter, int id_service, string phone = null)
+        public Salaryman(int id_salary,string imageLink, string lastName, string firstName, char gender, string mobilePhone, string mail, int id_headquarter, int id_service, string phone = null)
         {
-            id_salary++;
+            this.id_salary = id_salary;
             this.imageLink = imageLink;
             this.lastName = lastName;
             this.firstName = firstName;
