@@ -132,5 +132,10 @@ namespace DotAgro
                 admin.Show();
             }
         }
+
+        public static void Close()
+        {
+            Close();
+        }
     }
 }

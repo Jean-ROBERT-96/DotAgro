@@ -12,7 +12,7 @@
             <TextBox x:Name="user" Margin="10,2,10,2"/>
             <Label Content="Entrez votre mot de passe :" Margin="10,2,10,2"/>
             <PasswordBox x:Name="password" Margin="10,2,10,2"/>
-            <Button x:Name="Connect" Margin="10" Content="Connexion"/>
+            <Button x:Name="Connect" Margin="10" Content="Connexion" Click="Connect_Click"/>
         </StackPanel>
     </Grid>
 </Window>
