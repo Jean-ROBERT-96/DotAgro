@@ -66,7 +66,7 @@ namespace DotAgro
             }
             catch(Exception ex)
             {
-                MessageBox.Show($"Erreur de connexion : {ex}", "Erreur de connexion", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Erreur de connexion : {ex.Message}", "Erreur de connexion", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
