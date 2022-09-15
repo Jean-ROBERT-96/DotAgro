@@ -24,10 +24,12 @@ namespace DotAgro
         MySqlConnection connect;
         MySqlCommand command;
         MySqlDataReader reader;
+        MainWindow myWindow;
 
         public Login()
         {
             InitializeComponent();
+            myWindow = (MainWindow)Application.Current.MainWindow;
         }
 
         private void Connect_Click(object sender, RoutedEventArgs e)
@@ -37,21 +39,18 @@ namespace DotAgro
             
 
             connect = new MySqlConnection("server=localhost;database=admindotagro;uid=root;pwd=\"\";");
-            command = new MySqlCommand("SELECT * FROM administrateur", connect);
+            command = new MySqlCommand($"SELECT * FROM administrateur WHERE userid = '{id}'", connect);
             
             try
             {
                 connect.Open();
                 command.Prepare();
                 reader = command.ExecuteReader();
-                bool isConnect = false;
                 while (reader.Read())
                 {
                     if (Convert.ToString(reader["userid"]) == id && Convert.ToString(reader["pass"]) == pwd)
                     {
-                        isConnect = true;
-                        Admin admin = new Admin();
-                        admin.Show();
+                        myWindow.AdminSwitch();
                         Close();
 
                         reader.Close();

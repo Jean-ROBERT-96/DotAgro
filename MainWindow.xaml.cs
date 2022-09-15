@@ -26,11 +26,13 @@ namespace DotAgro
     public partial class MainWindow : Window
     {
         DataConnect data;
+        
 
         public MainWindow()
         {
             InitializeComponent();
             Initialization();
+            
         }
 
         public void Initialization()
@@ -87,6 +89,13 @@ namespace DotAgro
                 Login admin = new Login();
                 admin.Show();
             }
+        }
+        
+        public void AdminSwitch()
+        {
+            ManageServices.Visibility = Visibility.Visible;
+            ManageHeadquarters.Visibility = Visibility.Visible;
+            ManageSalary.Visibility = Visibility.Visible;
         }
     }
 }

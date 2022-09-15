@@ -23,6 +23,9 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel VerticalAlignment="Bottom" Grid.Row="1">
+                <Button x:Name="ManageServices" Margin="10" Content="Gérer les services" Visibility="Hidden"/>
+                <Button x:Name="ManageHeadquarters" Margin="10" Content="Gérer les sites" Visibility="Hidden"/>
+                <Button x:Name="ManageSalary" Margin="10" Content="Gérer les salariés" Visibility="Hidden"/>
                 <Button x:Name="Reload" Margin="10" Content="Actualiser" Click="Reload_Click"/>
             </StackPanel>
         </Grid>
