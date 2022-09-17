@@ -1,5 +1,6 @@
 ﻿using DotAgro.data;
 using DotAgro.entity;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,14 @@ namespace DotAgro.graphics
         public Services services { get; }
         DataConnect data;
         List<Salaryman> salary;
+        MainWindow mainWindow;
 
         public ManageFrame(List<Salaryman> salary, Headquarters h)
         {
             InitializeComponent();
             headquarters = h;
             this.salary = salary.Where(sa => sa.id_headquarter == h.id_headquarter).ToList();
+            mainWindow = (MainWindow)Application.Current.MainWindow;
             Display();
         }
 
@@ -65,16 +68,29 @@ namespace DotAgro.graphics
         private void DeleteManage_Click(object sender, RoutedEventArgs e)
         {
             data = new DataConnect();
-            var result = MessageBox.Show($"Voulez vous supprimer {infoManage.Text}? Cette action sera irréversible.", $"Suppresion de {infoManage.Text}", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if(result == MessageBoxResult.Yes && headquarters != null)
+
+            if (salary.Count != 0)
             {
-                data.DeleteManage(headquarters.id_headquarter, "headquarters", salary);
+                MessageBox.Show("Erreur, des personnes sont encores affiliés.", "Erreur de supression", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var result = MessageBox.Show($"Voulez vous supprimer {infoManage.Text}? Cette action sera irréversible.", $"Suppresion de {infoManage.Text}", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            
+            if (result == MessageBoxResult.Yes && headquarters != null)
+            {
+                data.DeleteManage(headquarters.id_headquarter, "headquarters");
+                mainWindow.headquartersList.Remove(headquarters);
+                infoManage.Text = "Site supprimé.";
             }
             else if(result == MessageBoxResult.Yes && services != null)
             {
-                data.DeleteManage(services.id_service, "services", salary);
+                data.DeleteManage(services.id_service, "services");
+                mainWindow.servicesList.Remove(services);
+                infoManage.Text = "Service supprimé.";
             }
-            
+            DeleteManage.Visibility = Visibility.Hidden;
+            EditManage.Visibility = Visibility.Hidden;
         }
     }
 }

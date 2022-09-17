@@ -102,14 +102,8 @@ namespace DotAgro.data
             }
         }
 
-        public void DeleteManage(int id, string manage, List<Salaryman> salary)
+        public void DeleteManage(int id, string manage)
         {
-            if (salary.Count != 0)
-            {
-                MessageBox.Show("Erreur, des personnes sont encores affiliés.", "Erreur de supression", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
             connect = new MySqlConnection($"server={server};database={dbName};uid={user};pwd={password};");
             command = new MySqlCommand($"DELETE FROM {manage} WHERE id_{manage} = '{id}'", connect);
 
