@@ -11,8 +11,8 @@
     <Grid Background="Gray">
         <StackPanel Orientation="Horizontal">
             <TextBlock x:Name="infoManage" Background="White" Margin="10" Height="20" Width="210"/>
-            <Button x:Name="EditManage" Margin="10" Height="20" Content="Modifier"/>
-            <Button x:Name="DeleteManage" Margin="10" Height="20" Content="Supprimer"/>
+            <Button x:Name="EditManage" Margin="10" Height="20" Content="Modifier" Click="EditManage_Click"/>
+            <Button x:Name="DeleteManage" Margin="10" Height="20" Content="Supprimer" Click="DeleteManage_Click"/>
         </StackPanel>
     </Grid>
 </Page>

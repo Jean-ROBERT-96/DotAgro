@@ -20,38 +20,43 @@ using DotAgro.data;
 
 namespace DotAgro
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         DataConnect data;
-        
+
+        public List<Headquarters> headquartersList { get; set; }
+        public List<Services> servicesList { get; set; }
+        public List<Salaryman> salarymanList { get; set; }
+        public List<ProfileFrame> profileFrames { get; set; }
+
+        public List<ManageFrame> manageFrame { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
             Initialization();
-            
         }
 
+        /// <summary>
+        /// Initialisation des frames de la page d'accueil.
+        /// </summary>
         public void Initialization()
         {
             data = new DataConnect();
             data.PreInitialization();
             
-            foreach (ProfileFrame p in data.profileFrames)
+            foreach (ProfileFrame p in profileFrames)
             {
                 ScreenSalary.Children.Add(new Frame() {Margin = new Thickness(2, 5, 2, 5), Height = 120, Width = 525, Content = p });
             }
 
-            foreach(Headquarters h in data.headquartersList)
+            foreach(Headquarters h in headquartersList)
             {
                 HeadquartersSelect.Items.Add(new ComboBoxItem { Content = h.name, Tag = h.id_headquarter });
             }
             HeadquartersSelect.SelectedIndex = 0;
 
-            foreach(Services s in data.servicesList)
+            foreach(Services s in servicesList)
             {
                 ServicesSelect.Items.Add(new ComboBoxItem { Content = s.name, Tag = s.id_service });
             }
@@ -61,7 +66,7 @@ namespace DotAgro
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             var searchProfile = new List<ProfileFrame>();
-            searchProfile = data.profileFrames.Where(pf => 
+            searchProfile = profileFrames.Where(pf => 
             (pf.salary.lastName.Equals(SearchBox.Text, StringComparison.OrdinalIgnoreCase)) &&
             (pf.salary.id_headquarter.Equals(Convert.ToInt32(((ComboBoxItem)HeadquartersSelect.SelectedItem).Tag))) &&
             (pf.salary.id_service.Equals(Convert.ToInt32(((ComboBoxItem)ServicesSelect.SelectedItem).Tag)))).ToList();
@@ -76,26 +81,44 @@ namespace DotAgro
         private void Reload_Click(object sender, RoutedEventArgs e)
         {
             ScreenSalary.Children.Clear();
-            data.profileFrames.Clear();
-            data.headquartersList.Clear();
-            data.servicesList.Clear();
+            profileFrames.Clear();
+            headquartersList.Clear();
+            servicesList.Clear();
             Initialization();
         }
 
         void AdminMode_KeyDown(object sender, KeyEventArgs e)
         {
-            if(Keyboard.IsKeyDown(Key.F8) && Keyboard.IsKeyDown(Key.LeftCtrl))
+            if(Keyboard.IsKeyDown(Key.L) && Keyboard.IsKeyDown(Key.LeftCtrl))
             {
                 Login admin = new Login();
                 admin.Show();
             }
         }
         
+        //Mode administrateur
         public void AdminSwitch()
         {
             ManageServices.Visibility = Visibility.Visible;
             ManageHeadquarters.Visibility = Visibility.Visible;
             ManageSalary.Visibility = Visibility.Visible;
+        }
+
+        void ManageServices_Click(object sender, RoutedEventArgs e)
+        {
+            ManagementEdit manage = new ManagementEdit("services");
+            manage.Show();
+        }
+
+        void ManageHeadquarters_Click(object sender, RoutedEventArgs e)
+        {
+            ManagementEdit manage = new ManagementEdit("headquarters");
+            manage.Show();
+        }
+
+        void ManageSalary_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

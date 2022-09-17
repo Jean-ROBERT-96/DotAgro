@@ -25,7 +25,6 @@ namespace DotAgro.graphics
         BitmapImage image;
         List<Headquarters> headquartersList;
         List<Services> servicesList;
-        KeyBinding keyAdmin;
 
         public ProfileFrame(Salaryman s, List<Headquarters> headquartersList, List<Services> servicesList)
         {
@@ -35,7 +34,6 @@ namespace DotAgro.graphics
             this.headquartersList = headquartersList;
             this.servicesList = servicesList;
             Display();
-            //this.keyAdmin = new KeyBinding { Command = AdminMode() };
         }
 
         void Display()
