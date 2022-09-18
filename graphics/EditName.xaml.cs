@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DotAgro.data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,32 @@ namespace DotAgro.graphics
     /// </summary>
     public partial class EditName : Window
     {
-        public EditName()
+        DataConnect data;
+        string name;
+        string type;
+        ManagementEdit manage;
+
+        public EditName(string type, string name)
         {
+            this.type = type;
+            this.name = name;
             InitializeComponent();
+            data = new DataConnect();
+            manage = (ManagementEdit)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+        }
+
+        private void EditNamed_Click(object sender, RoutedEventArgs e)
+        {
+            if(nameEdit.Text != "")
+            {
+                data.EditManage(type, name, nameEdit.Text);
+                Close();
+                manage.Reload();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez entrez un nouveau nom.", "Champs vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

@@ -28,6 +28,7 @@ namespace DotAgro.graphics
         DataConnect data;
         List<Salaryman> salary;
         MainWindow mainWindow;
+        ManagementEdit manage;
 
         public ManageFrame(List<Salaryman> salary, Headquarters h)
         {
@@ -35,6 +36,7 @@ namespace DotAgro.graphics
             headquarters = h;
             this.salary = salary.Where(sa => sa.id_headquarter == h.id_headquarter).ToList();
             mainWindow = (MainWindow)Application.Current.MainWindow;
+            manage = Application.Current.Windows.OfType<ManagementEdit>().LastOrDefault(x => x.IsActive);
             Display();
         }
 
@@ -43,6 +45,8 @@ namespace DotAgro.graphics
             InitializeComponent();
             services = s;
             this.salary = salary.Where(sa => sa.id_service == s.id_service).ToList();
+            mainWindow = (MainWindow)Application.Current.MainWindow;
+            manage = Application.Current.Windows.OfType<ManagementEdit>().LastOrDefault(x => x.IsActive);
             Display();
         }
 
@@ -61,8 +65,16 @@ namespace DotAgro.graphics
 
         private void EditManage_Click(object sender, RoutedEventArgs e)
         {
-            EditName edit = new EditName();
-            edit.Show();
+            if(headquarters != null)
+            {
+                EditName edit = new EditName("headquarters", headquarters.name);
+                edit.Show();
+            }
+            else if(services != null)
+            {
+                EditName edit = new EditName("services", services.name);
+                edit.Show();
+            }
         }
 
         private void DeleteManage_Click(object sender, RoutedEventArgs e)
@@ -80,17 +92,13 @@ namespace DotAgro.graphics
             if (result == MessageBoxResult.Yes && headquarters != null)
             {
                 data.DeleteManage(headquarters.id_headquarter, "headquarters");
-                mainWindow.headquartersList.Remove(headquarters);
-                infoManage.Text = "Site supprimé.";
+                manage.Reload();
             }
             else if(result == MessageBoxResult.Yes && services != null)
             {
                 data.DeleteManage(services.id_service, "services");
-                mainWindow.servicesList.Remove(services);
-                infoManage.Text = "Service supprimé.";
+                manage.Reload();
             }
-            DeleteManage.Visibility = Visibility.Hidden;
-            EditManage.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBox x:Name="manageText" Margin="10" Width="315"/>
-            <Button x:Name="Add" Margin="10" Content="Ajouter"/>
+            <Button x:Name="Add" Margin="10" Content="Ajouter" Click="Add_Click"/>
         </StackPanel>
         <ScrollViewer Grid.Row="1">
             <StackPanel x:Name="ScreenManage" HorizontalAlignment="Center" Width="380"  />

@@ -8,27 +8,25 @@ using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Xml.Linq;
 
 namespace DotAgro.data
 {
     public class DataConnect
     {
-        protected string server = "localhost";
-        protected string dbName = "dotagro";
-        protected string user = "root";
-        protected string password = "";
+        string server = "localhost";
+        string dbName = "dotagro";
+        string user = "root";
+        string password = "";
 
-        protected MySqlConnection connect;
-        protected MySqlDataReader reader;
-        protected MySqlCommand command;
+        MySqlConnection connect;
+        MySqlDataReader reader;
+        MySqlCommand command;
         MainWindow mainWindow;
-
-        public List<ManageFrame> manageFrame { get; set; }
 
         public DataConnect(string dbName = "dotagro")
         {
             this.dbName = dbName;
-            manageFrame = new List<ManageFrame>();
             mainWindow = (MainWindow)Application.Current.MainWindow;
         }
 
@@ -84,8 +82,10 @@ namespace DotAgro.data
             mainWindow.salarymanList = salarymanList;
             mainWindow.profileFrames = profileFrames;
         }
-        public void PreInitManage(string parametre)
+        public List<ManageFrame> PreInitManage(string parametre)
         {
+            List<ManageFrame> manageFrame = new List<ManageFrame>();
+
             if (parametre == "headquarters")
             {
                 foreach (Headquarters h in mainWindow.headquartersList)
@@ -100,6 +100,8 @@ namespace DotAgro.data
                     manageFrame.Add(new ManageFrame(mainWindow.salarymanList, s));
                 }
             }
+
+            return manageFrame;
         }
 
         public void DeleteManage(int id, string manage)
@@ -107,6 +109,25 @@ namespace DotAgro.data
             connect = new MySqlConnection($"server={server};database={dbName};uid={user};pwd={password};");
             command = new MySqlCommand($"DELETE FROM {manage} WHERE id_{manage} = '{id}'", connect);
 
+            Read();
+        }
+
+        public void EditManage(string type, string name, string newname)
+        {
+            connect = new MySqlConnection($"server={server};database={dbName};uid={user};pwd={password};");
+            command = new MySqlCommand($"UPDATE {type} SET name = '{newname}' WHERE name = '{name}'", connect);
+            Read();
+        }
+
+        public void AddManage(string type, string name)
+        {
+            connect = new MySqlConnection($"server={server};database={dbName};uid={user};pwd={password};");
+            command = new MySqlCommand($"INSERT INTO {type} (name) VALUES ('{name}');", connect);
+            Read();
+        }
+
+        void Read()
+        {
             try
             {
                 connect.Open();
@@ -114,6 +135,7 @@ namespace DotAgro.data
                 reader = command.ExecuteReader();
                 reader.Read();
                 reader.Close();
+                connect.Close();
             }
             catch (Exception e)
             {

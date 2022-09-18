@@ -1,6 +1,5 @@
 ﻿using DotAgro.entity;
 using DotAgro.graphics;
-using DotAgro.interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +27,6 @@ namespace DotAgro
         public List<Services> servicesList { get; set; }
         public List<Salaryman> salarymanList { get; set; }
         public List<ProfileFrame> profileFrames { get; set; }
-
-        public List<ManageFrame> manageFrame { get; set; }
 
         public MainWindow()
         {
@@ -80,9 +77,16 @@ namespace DotAgro
 
         private void Reload_Click(object sender, RoutedEventArgs e)
         {
+            OnReload();
+        }
+
+        public void OnReload()
+        {
             ScreenSalary.Children.Clear();
             profileFrames.Clear();
+            HeadquartersSelect.Items.Clear();
             headquartersList.Clear();
+            ServicesSelect.Items.Clear();
             servicesList.Clear();
             Initialization();
         }
