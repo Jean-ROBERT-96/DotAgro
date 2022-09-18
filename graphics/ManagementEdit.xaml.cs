@@ -22,7 +22,7 @@ namespace DotAgro.graphics
     /// </summary>
     public partial class ManagementEdit : Window
     {
-        DataConnect data;
+        DataAdmin data;
         MainWindow mainWindow;
         string parametre;
         public List<ManageFrame> manageFrame { get; set; }
@@ -37,7 +37,7 @@ namespace DotAgro.graphics
 
         void Initialization()
         {
-            data = new DataConnect();
+            data = new DataAdmin();
             manageFrame = data.PreInitManage(parametre);
             foreach(ManageFrame m in manageFrame)
             {

@@ -25,7 +25,7 @@ namespace DotAgro.graphics
     {
         public Headquarters headquarters { get; }
         public Services services { get; }
-        DataConnect data;
+        DataAdmin data;
         List<Salaryman> salary;
         MainWindow mainWindow;
         ManagementEdit manage;
@@ -79,7 +79,7 @@ namespace DotAgro.graphics
 
         private void DeleteManage_Click(object sender, RoutedEventArgs e)
         {
-            data = new DataConnect();
+            data = new DataAdmin();
 
             if (salary.Count != 0)
             {

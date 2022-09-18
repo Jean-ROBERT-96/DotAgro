@@ -20,7 +20,7 @@ namespace DotAgro.graphics
     /// </summary>
     public partial class EditName : Window
     {
-        DataConnect data;
+        DataAdmin data;
         string name;
         string type;
         ManagementEdit manage;
@@ -30,7 +30,7 @@ namespace DotAgro.graphics
             this.type = type;
             this.name = name;
             InitializeComponent();
-            data = new DataConnect();
+            data = new DataAdmin();
             manage = (ManagementEdit)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
         }
 
