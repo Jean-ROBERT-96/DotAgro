@@ -20,8 +20,11 @@
             <StackPanel>
                 <TextBox x:Name="firstName" Margin="10"/>
                 <TextBox x:Name="lastName" Margin="10"/>
-                <ComboBox x:Name="genderSelect" Margin="10"/>
-                <TextBox x:Name="email" Margin="10"/>
+                <ComboBox x:Name="genderSelect" Margin="10">
+                    <ComboBoxItem Content="Homme" Tag="M"/>
+                    <ComboBoxItem Content="Femme" Tag="F"/>
+                </ComboBox>
+                    <TextBox x:Name="email" Margin="10"/>
             </StackPanel>
             <StackPanel Grid.Column="1">
                 <Image x:Name="ViewImage"  Margin="10" Width="130" Height="130"/>

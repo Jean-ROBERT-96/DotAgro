@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotAgro.graphics"
         mc:Ignorable="d"
-        Title="SalaryManage" Height="300" Width="750">
+        Title="SalaryManage" Height="300" Width="750" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -16,7 +16,7 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ComboBox x:Name="salarySelect" Margin="10"/>
+            <ComboBox x:Name="salarySelect" SelectionChanged="Display"  Margin="10"/>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -52,8 +52,8 @@
             </Grid>
         </Grid>
         <StackPanel Grid.Column="1">
-            <Button x:Name="AddSalary" Content="Ajouter un salarié" Margin="5"/>
-            <Button x:Name="EditSalary" Content="Modifier le salarié" Margin="5"/>
+            <Button x:Name="AddSalary" Content="Ajouter un salarié" Margin="5" Click="AddSalary_Click"/>
+            <Button x:Name="EditSalary" Content="Modifier le salarié" Margin="5" Click="EditSalary_Click"/>
             <Button x:Name="DeleteSalary" Content="Supprimer le salarié" Margin="5"/>
         </StackPanel>
     </Grid>
