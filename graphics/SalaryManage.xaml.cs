@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace DotAgro.graphics
 {
     /// <summary>
-    /// Logique d'interaction pour ManageSalary.xaml
+    /// Logique d'interaction pour SalaryManage.xaml
     /// </summary>
-    public partial class ManageSalary : Window
+    public partial class SalaryManage : Window
     {
-        public ManageSalary()
+        public SalaryManage()
         {
             InitializeComponent();
         }

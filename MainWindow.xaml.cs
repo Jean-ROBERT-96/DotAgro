@@ -122,7 +122,8 @@ namespace DotAgro
 
         void ManageSalary_Click(object sender, RoutedEventArgs e)
         {
-
+            SalaryManage salaryManage = new SalaryManage();
+            salaryManage.Show();
         }
     }
 }

@@ -79,6 +79,7 @@ namespace DotAgro.graphics
 
         private void DeleteManage_Click(object sender, RoutedEventArgs e)
         {
+            manage = Application.Current.Windows.OfType<ManagementEdit>().LastOrDefault(x => x.IsActive);
             data = new DataAdmin();
 
             if (salary.Count != 0)
