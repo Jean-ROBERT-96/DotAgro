@@ -60,6 +60,11 @@ namespace DotAgro.data
             Read();
         }
 
-        
+        public void DeleteSalary(int id)
+        {
+            connect = new MySqlConnection($"server={server};database={dbName};uid={user};pwd={password};");
+            command = new MySqlCommand($"DELETE FROM salaryman WHERE id_salary = '{id}';", connect);
+            Read();
+        }
     }
 }

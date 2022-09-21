@@ -63,10 +63,20 @@ namespace DotAgro
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             var searchProfile = new List<ProfileFrame>();
-            searchProfile = profileFrames.Where(pf => 
-            (pf.salary.lastName.Equals(SearchBox.Text, StringComparison.OrdinalIgnoreCase)) &&
-            (pf.salary.id_headquarter.Equals(Convert.ToInt32(((ComboBoxItem)HeadquartersSelect.SelectedItem).Tag))) &&
-            (pf.salary.id_service.Equals(Convert.ToInt32(((ComboBoxItem)ServicesSelect.SelectedItem).Tag)))).ToList();
+
+            if(SearchBox.Text == "" || SearchBox.Text == "Recherche par nom...")
+            {
+                searchProfile = profileFrames.Where(pf =>
+                (pf.salary.id_headquarter.Equals(Convert.ToInt32(((ComboBoxItem)HeadquartersSelect.SelectedItem).Tag))) &&
+                (pf.salary.id_service.Equals(Convert.ToInt32(((ComboBoxItem)ServicesSelect.SelectedItem).Tag)))).ToList();
+            }
+            else
+            {
+                searchProfile = profileFrames.Where(pf =>
+                (pf.salary.lastName.Equals(SearchBox.Text, StringComparison.OrdinalIgnoreCase) || pf.salary.firstName.Equals(SearchBox.Text, StringComparison.OrdinalIgnoreCase)) &&
+                (pf.salary.id_headquarter.Equals(Convert.ToInt32(((ComboBoxItem)HeadquartersSelect.SelectedItem).Tag))) &&
+                (pf.salary.id_service.Equals(Convert.ToInt32(((ComboBoxItem)ServicesSelect.SelectedItem).Tag)))).ToList();
+            }
 
             ScreenSalary.Children.Clear();
             foreach(ProfileFrame p in searchProfile)

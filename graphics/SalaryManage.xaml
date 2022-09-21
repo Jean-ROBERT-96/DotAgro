@@ -54,7 +54,7 @@
         <StackPanel Grid.Column="1">
             <Button x:Name="AddSalary" Content="Ajouter un salarié" Margin="5" Click="AddSalary_Click"/>
             <Button x:Name="EditSalary" Content="Modifier le salarié" Margin="5" Click="EditSalary_Click"/>
-            <Button x:Name="DeleteSalary" Content="Supprimer le salarié" Margin="5"/>
+            <Button x:Name="DeleteSalary" Content="Supprimer le salarié" Margin="5" Click="DeleteSalary_Click"/>
         </StackPanel>
     </Grid>
 </Window>
