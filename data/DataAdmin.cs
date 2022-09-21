@@ -66,5 +66,19 @@ namespace DotAgro.data
             command = new MySqlCommand($"DELETE FROM salaryman WHERE id_salary = '{id}';", connect);
             Read();
         }
+
+        public void EditSalary(int id,string image, string fname, string lname, char gender, string mobilePhone, string mail, int idHead, int idServ, string phone = null)
+        {
+            connect = new MySqlConnection($"server={server};database={dbName};uid={user};pwd={password};");
+            command = new MySqlCommand($"UPDATE OR REPLACE salaryman SET image_link = '{image}', firstName = '{fname}', lastName = '{lname}', gender = '{gender}', phone = '{phone}', mobile_phone = '{mobilePhone}', mail = '{mail}', id_headquarters = '{idHead}', id_services = '{idServ}' WHERE id_salary = '{id}';");
+            Read();
+        }
+
+        public void AddSalary(string image, string fname, string lname, char gender, string mobilePhone, string mail, int idHead, int idServ, string phone = null)
+        {
+            connect = new MySqlConnection($"server={server};database={dbName};uid={user};pwd={password};");
+            command = new MySqlCommand($"INSERT INTO salaryman (image_link, firstName, lastName, gender, phone, mobile_phone, mail, id_headquarters, id_services) VALUES ('{image}', '{fname}', '{lname}', '{gender}', '{phone}', '{mobilePhone}', {mail}, {idHead}, {idServ});");
+            Read();
+        }
     }
 }

@@ -28,7 +28,7 @@
             </StackPanel>
             <StackPanel Grid.Column="1">
                 <Image x:Name="ViewImage"  Margin="10" Width="130" Height="130"/>
-                <Button x:Name="UploadFile" Margin="10" Content="Ajouter une image..."/>
+                <Button x:Name="UploadFile" Margin="10" Content="Ajouter une image..." Click="UploadFile_Click"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
@@ -39,12 +39,12 @@
             <StackPanel>
                 <TextBox x:Name="phone" Margin="10"/>
                 <ComboBox x:Name="selectServices" Margin="10"/>
-                <Button x:Name="Delete" Margin="10" Width="100" Content="Supprimer"/>
+                <Button x:Name="Cancel" Margin="10" Width="100" Content="Annuler" Click="Cancel_Click"/>
             </StackPanel>
             <StackPanel Grid.Column="2">
                 <TextBox x:Name="mobilePhone" Margin="10"/>
                 <ComboBox x:Name="selectHeadquarters" Margin="10"/>
-                <Button x:Name="Add" Margin="10" Width="100" Content="Ajouter"/>
+                <Button x:Name="Add" Margin="10" Width="100" Content="Ajouter" Click="Add_Click"/>
             </StackPanel>
         </Grid>
     </Grid>
