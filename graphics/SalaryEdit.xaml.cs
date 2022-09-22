@@ -1,8 +1,11 @@
-﻿using DotAgro.entity;
+﻿using DotAgro.data;
+using DotAgro.entity;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,13 +26,16 @@ namespace DotAgro.graphics
     {
         MainWindow mainWindow;
         BitmapImage image;
+        SalaryManage salaryManage;
         Salaryman salary;
         OpenFileDialog file;
+        DataAdmin data;
 
         public SalaryEdit()
         {
             InitializeComponent();
             mainWindow = (MainWindow)Application.Current.MainWindow;
+            salaryManage = Application.Current.Windows.OfType<SalaryManage>().LastOrDefault(x => x.IsActive);
             ComboxInit();
         }
 
@@ -37,6 +43,7 @@ namespace DotAgro.graphics
         {
             InitializeComponent();
             mainWindow = (MainWindow)Application.Current.MainWindow;
+            salaryManage = Application.Current.Windows.OfType<SalaryManage>().LastOrDefault(x => x.IsActive);
             salary = salaryman;
             Add.Content = "Modifier";
             ComboxInit();
@@ -113,7 +120,36 @@ namespace DotAgro.graphics
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            if(CheckForm() == false)
+            {
+                MessageBox.Show("Votre formulaire n'est pas complet, merci de remplir les champs obligatoires.", "Erreur d'ajout", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
+            data = new DataAdmin();
+            if (salary != null)
+            {
+                data.EditSalary(salary.id_salary, firstName.Text, lastName.Text, Convert.ToChar(genderSelect.Tag), mobilePhone.Text, email.Text, Convert.ToInt32(((ComboBoxItem)selectHeadquarters.SelectedItem).Tag), Convert.ToInt32(((ComboBoxItem)selectServices.SelectedItem).Tag), phone.Text);
+            }
+            else if(salary == null)
+            {
+                data.AddSalary(firstName.Text, lastName.Text, Convert.ToChar(((ComboBoxItem)genderSelect.SelectedItem).Tag), mobilePhone.Text, email.Text, Convert.ToInt32(((ComboBoxItem)selectHeadquarters.SelectedItem).Tag), Convert.ToInt32(((ComboBoxItem)selectServices.SelectedItem).Tag), phone.Text);
+            }
+
+            mainWindow.OnReload();
+            salaryManage.salarySelect.Items.Clear();
+            salaryManage.Initialization();
+            this.Close();
+        }
+
+        bool CheckForm()
+        {
+            if(firstName.Text != "" && lastName.Text != "" && email.Text != "" && mobilePhone.Text != "")
+            {
+                return true;
+            }
+            
+            return false;
         }
     }
 }

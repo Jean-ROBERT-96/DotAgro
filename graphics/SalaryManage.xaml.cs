@@ -36,7 +36,7 @@ namespace DotAgro.graphics
             Initialization();
         }
 
-        void Initialization()
+        public void Initialization()
         {
             foreach (Salaryman salary in mainWindow.salarymanList)
             {

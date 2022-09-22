@@ -67,17 +67,17 @@ namespace DotAgro.data
             Read();
         }
 
-        public void EditSalary(int id,string image, string fname, string lname, char gender, string mobilePhone, string mail, int idHead, int idServ, string phone = null)
+        public void EditSalary(int id, string fname, string lname, char gender, string mobilePhone, string mail, int idHead, int idServ, string phone = null)
         {
             connect = new MySqlConnection($"server={server};database={dbName};uid={user};pwd={password};");
-            command = new MySqlCommand($"UPDATE OR REPLACE salaryman SET image_link = '{image}', firstName = '{fname}', lastName = '{lname}', gender = '{gender}', phone = '{phone}', mobile_phone = '{mobilePhone}', mail = '{mail}', id_headquarters = '{idHead}', id_services = '{idServ}' WHERE id_salary = '{id}';");
+            command = new MySqlCommand($"UPDATE salaryman SET image_link = 'http://www.clker.com/cliparts/R/S/Z/4/t/f/crossed-hammers-bw-100x100-md.png', firstName = '{fname}', lastName = '{lname}', gender = '{gender}', phone = '{phone}', mobile_phone = '{mobilePhone}', mail = '{mail}', id_headquarters = {idHead}, id_services = {idServ} WHERE id_salary = {id};", connect);
             Read();
         }
 
-        public void AddSalary(string image, string fname, string lname, char gender, string mobilePhone, string mail, int idHead, int idServ, string phone = null)
+        public void AddSalary(string fname, string lname, char gender, string mobilePhone, string email, int idHead, int idServ, string phone = null)
         {
             connect = new MySqlConnection($"server={server};database={dbName};uid={user};pwd={password};");
-            command = new MySqlCommand($"INSERT INTO salaryman (image_link, firstName, lastName, gender, phone, mobile_phone, mail, id_headquarters, id_services) VALUES ('{image}', '{fname}', '{lname}', '{gender}', '{phone}', '{mobilePhone}', {mail}, {idHead}, {idServ});");
+            command = new MySqlCommand($"INSERT INTO salaryman (image_link, firstName, lastName, gender, phone, mobile_phone, mail, id_headquarters, id_services) VALUES ('http://www.clker.com/cliparts/R/S/Z/4/t/f/crossed-hammers-bw-100x100-md.png', '{fname}', '{lname}', '{gender}', '{phone}', '{mobilePhone}', '{email}', {idHead}, {idServ});", connect);
             Read();
         }
     }
