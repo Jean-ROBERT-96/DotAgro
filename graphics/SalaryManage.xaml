@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotAgro.graphics"
         mc:Ignorable="d"
-        Title="SalaryManage" Height="300" Width="750" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="SalaryManage" Height="300" Width="750" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

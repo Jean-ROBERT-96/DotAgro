@@ -23,6 +23,9 @@ namespace DotAgro
     {
         DataConnect data;
 
+        public ManagementEdit manage { get; set; }
+        public SalaryManage salaryManage { get; set; }
+
         public List<Headquarters> headquartersList { get; set; }
         public List<Services> servicesList { get; set; }
         public List<Salaryman> salarymanList { get; set; }
@@ -120,20 +123,29 @@ namespace DotAgro
 
         void ManageServices_Click(object sender, RoutedEventArgs e)
         {
-            ManagementEdit manage = new ManagementEdit("services");
-            manage.Show();
+            if(manage == null)
+            {
+                manage = new ManagementEdit("services");
+                manage.Show();
+            }
         }
 
         void ManageHeadquarters_Click(object sender, RoutedEventArgs e)
         {
-            ManagementEdit manage = new ManagementEdit("headquarters");
-            manage.Show();
+            if(manage == null)
+            {
+                manage = new ManagementEdit("headquarters");
+                manage.Show();
+            }
         }
 
         void ManageSalary_Click(object sender, RoutedEventArgs e)
         {
-            SalaryManage salaryManage = new SalaryManage();
-            salaryManage.Show();
+            if(salaryManage == null)
+            {
+                salaryManage = new SalaryManage();
+                salaryManage.Show();
+            }
         }
     }
 }

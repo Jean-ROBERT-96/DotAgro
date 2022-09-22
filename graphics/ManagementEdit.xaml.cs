@@ -3,6 +3,7 @@ using DotAgro.entity;
 using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,11 @@ namespace DotAgro.graphics
             manageFrame.Clear();
             mainWindow.OnReload();
             Initialization();
+        }
+
+        void Window_Closing(object sender, CancelEventArgs e)
+        {
+            mainWindow.manage = null;
         }
     }
 }

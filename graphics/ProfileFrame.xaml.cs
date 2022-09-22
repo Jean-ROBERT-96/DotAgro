@@ -46,7 +46,7 @@ namespace DotAgro.graphics
             {
                 gender.Text = "Homme";
             }
-            else if(salary.gender == 'M')
+            else if(salary.gender == 'F')
             {
                 gender.Text ="Femme";
             }

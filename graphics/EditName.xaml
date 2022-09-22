@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotAgro.graphics"
         mc:Ignorable="d"
-        Title="Modifier" Height="150" Width="300" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="Modifier" Height="150" Width="300" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid>
         <StackPanel VerticalAlignment="Center">
             <Label Content="Choisissez un nouveau nom :"/>

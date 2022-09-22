@@ -3,6 +3,7 @@ using DotAgro.entity;
 using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace DotAgro.graphics
         BitmapImage image;
         DataAdmin data;
         Salaryman salaryman;
+        public SalaryEdit editSalary { get; set; }
 
         public SalaryManage()
         {
@@ -90,15 +92,18 @@ namespace DotAgro.graphics
 
         private void AddSalary_Click(object sender, RoutedEventArgs e)
         {
-            SalaryEdit addSalary = new SalaryEdit();
-            addSalary.Show();
+            if(editSalary == null)
+            {
+                editSalary = new SalaryEdit();
+                editSalary.Show();
+            }
         }
 
         private void EditSalary_Click(object sender, RoutedEventArgs e)
         {
-            if(salaryman != null)
+            if(salaryman != null && editSalary == null)
             {
-                SalaryEdit editSalary = new SalaryEdit((Salaryman)((ComboBoxItem)salarySelect.SelectedItem).Tag);
+                editSalary = new SalaryEdit((Salaryman)((ComboBoxItem)salarySelect.SelectedItem).Tag);
                 editSalary.Show();
             }
         }
@@ -115,6 +120,11 @@ namespace DotAgro.graphics
                     mainWindow.OnReload();
                 }
             }
+        }
+
+        void Window_Closing(object sender, CancelEventArgs e)
+        {
+            mainWindow.salaryManage = null;
         }
     }
 }

@@ -27,6 +27,7 @@ namespace DotAgro.graphics
         public Services services { get; }
         DataAdmin data;
         List<Salaryman> salary;
+        public EditName edit { get; set; }
         MainWindow mainWindow;
         ManagementEdit manage;
 
@@ -65,14 +66,14 @@ namespace DotAgro.graphics
 
         private void EditManage_Click(object sender, RoutedEventArgs e)
         {
-            if(headquarters != null)
+            if(headquarters != null && edit == null)
             {
-                EditName edit = new EditName("headquarters", headquarters.name);
+                edit = new EditName("headquarters", headquarters.name);
                 edit.Show();
             }
-            else if(services != null)
+            else if(services != null && edit == null)
             {
-                EditName edit = new EditName("services", services.name);
+                edit = new EditName("services", services.name);
                 edit.Show();
             }
         }

@@ -1,6 +1,7 @@
 ﻿using DotAgro.data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,12 +41,17 @@ namespace DotAgro.graphics
             {
                 data.EditManage(type, name, nameEdit.Text);
                 Close();
-                manage.Reload();
+                //manage.Reload();
             }
             else
             {
                 MessageBox.Show("Veuillez entrez un nouveau nom.", "Champs vide", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        void Window_Closing(object sender, CancelEventArgs e)
+        {
+            manage.Reload();
         }
     }
 }
