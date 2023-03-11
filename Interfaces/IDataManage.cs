@@ -10,7 +10,7 @@ namespace DotAgro.Interfaces
 {
     public interface IDataManage<T>
     {
-        ObservableCollection<Headquarters>? GetData();
+        ObservableCollection<T>? GetData();
         bool AddData(T item);
         bool EditData(T item);
         bool DeleteData(T item);
