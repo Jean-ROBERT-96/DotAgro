@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DotAgro.Interfaces
 {
-    public interface IDataContext
+    public interface IDataConnect
     {
         Task<string?> DataGet(string args);
         Task<string> DataPost(object item, string args);

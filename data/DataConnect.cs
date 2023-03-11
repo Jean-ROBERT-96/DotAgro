@@ -1,4 +1,4 @@
-﻿using DotAgro.entity;
+﻿using DotAgro.Models;
 using DotAgro.graphics;
 using DotAgro.Interfaces;
 using Newtonsoft.Json;
@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
 
-namespace DotAgro.data
+namespace DotAgro.Data
 {
-    public class DataConnect : IDataContext
+    public class DataConnect : IDataConnect
     {
         private readonly Uri _url = new("http://dotapi:9292/api/");
 

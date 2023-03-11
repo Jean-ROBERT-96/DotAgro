@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DotAgro.entity
+namespace DotAgro.Models
 {
     public class Headquarter
     {
