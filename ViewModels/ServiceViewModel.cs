@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace DotAgro.ViewModels
 {
-    public class ServiceViewModel : INotifyPropertyChanged
+    public class ServiceViewModel : BaseViewModels
     {
         private readonly IDataManage<Models.Services> _dataManage;
         private ObservableCollection<Models.Services> _servicesList = new();
@@ -73,14 +73,6 @@ namespace DotAgro.ViewModels
 
             InitValue();
             NotifyPropertyChanged(nameof(ServicesList));
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

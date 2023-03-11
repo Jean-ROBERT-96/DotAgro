@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace DotAgro.ViewModels
 {
-    public class SalaryViewModel : INotifyPropertyChanged
+    public class SalaryViewModel : BaseViewModels
     {
         private readonly IDataManage<Salary> _dataManage;
         private ObservableCollection<Salary> _salariesList = new();
@@ -30,8 +30,6 @@ namespace DotAgro.ViewModels
         {
             _dataManage = dataManage;
         }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         public void InitValue()
         {
@@ -75,12 +73,6 @@ namespace DotAgro.ViewModels
 
             InitValue();
             NotifyPropertyChanged(nameof(SalariesList));
-        }
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

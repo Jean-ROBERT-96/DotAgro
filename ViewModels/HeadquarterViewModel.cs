@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace DotAgro.ViewModels
 {
-    public class HeadquarterViewModel : INotifyPropertyChanged
+    public class HeadquarterViewModel : BaseViewModels
     {
         private readonly IDataManage<Headquarters> _dataManage;
         private ObservableCollection<Headquarters> _headquartersList = new();
@@ -73,14 +73,6 @@ namespace DotAgro.ViewModels
 
             InitValue();
             NotifyPropertyChanged(nameof(HeadquartersList));
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
