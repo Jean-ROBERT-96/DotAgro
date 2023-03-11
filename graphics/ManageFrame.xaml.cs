@@ -23,15 +23,15 @@ namespace DotAgro.graphics
     /// </summary>
     public partial class ManageFrame : Page
     {
-        public Headquarters headquarters { get; }
-        public Services services { get; }
+        public Headquarter headquarters { get; }
+        public Service services { get; }
         DataAdmin data;
-        List<Salaryman> salary;
+        List<Salary> salary;
         public EditName edit { get; set; }
         MainWindow mainWindow;
         ManagementEdit manage;
 
-        public ManageFrame(List<Salaryman> salary, Headquarters h)
+        public ManageFrame(List<Salary> salary, Headquarter h)
         {
             InitializeComponent();
             headquarters = h;
@@ -41,7 +41,7 @@ namespace DotAgro.graphics
             Display();
         }
 
-        public ManageFrame(List<Salaryman> salary, Services s)
+        public ManageFrame(List<Salary> salary, Service s)
         {
             InitializeComponent();
             services = s;

@@ -21,12 +21,12 @@ namespace DotAgro.graphics
     /// </summary>
     public partial class ProfileFrame : Page
     {
-        public Salaryman salary { get; }
+        public Salary salary { get; }
         BitmapImage image;
-        List<Headquarters> headquartersList;
-        List<Services> servicesList;
+        List<Headquarter> headquartersList;
+        List<Service> servicesList;
 
-        public ProfileFrame(Salaryman s, List<Headquarters> headquartersList, List<Services> servicesList)
+        public ProfileFrame(Salary s, List<Headquarter> headquartersList, List<Service> servicesList)
         {
             InitializeComponent();
             salary = s;
@@ -56,7 +56,7 @@ namespace DotAgro.graphics
 
             imageBox.Source = image;
 
-            foreach(Headquarters h in headquartersList)
+            foreach(Headquarter h in headquartersList)
             {
                 if(salary.id_headquarter == h.id_headquarter)
                 {
@@ -64,7 +64,7 @@ namespace DotAgro.graphics
                 }
             }
 
-            foreach (Services s in servicesList)
+            foreach (Service s in servicesList)
             {
                 if (salary.id_service == s.id_service)
                 {

@@ -28,7 +28,7 @@ namespace DotAgro.graphics
         MainWindow mainWindow;
         BitmapImage image;
         SalaryManage salaryManage;
-        Salaryman salary;
+        Salary salary;
         OpenFileDialog file;
         DataAdmin data;
 
@@ -40,7 +40,7 @@ namespace DotAgro.graphics
             ComboxInit();
         }
 
-        public SalaryEdit(Salaryman salaryman)
+        public SalaryEdit(Salary salaryman)
         {
             InitializeComponent();
             mainWindow = (MainWindow)Application.Current.MainWindow;
@@ -53,7 +53,7 @@ namespace DotAgro.graphics
 
         void ComboxInit()
         {
-            foreach(Headquarters head in mainWindow.headquartersList)
+            foreach(Headquarter head in mainWindow.headquartersList)
             {
                 selectHeadquarters.Items.Add(new ComboBoxItem { Content = head.name, Tag = head.id_headquarter });
                 if(salary != null && salary.id_headquarter == head.id_headquarter)
@@ -62,7 +62,7 @@ namespace DotAgro.graphics
                 }
             }
 
-            foreach(Services serv in mainWindow.servicesList)
+            foreach(Service serv in mainWindow.servicesList)
             {
                 selectServices.Items.Add(new ComboBoxItem { Content = serv.name, Tag = serv.id_service });
                 if (salary != null && salary.id_service == serv.id_service)

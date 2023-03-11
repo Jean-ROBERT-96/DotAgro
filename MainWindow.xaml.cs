@@ -26,9 +26,9 @@ namespace DotAgro
         public ManagementEdit manage { get; set; }
         public SalaryManage salaryManage { get; set; }
 
-        public List<Headquarters> headquartersList { get; set; }
-        public List<Services> servicesList { get; set; }
-        public List<Salaryman> salarymanList { get; set; }
+        public List<Headquarter> headquartersList { get; set; }
+        public List<Service> servicesList { get; set; }
+        public List<Salary> salarymanList { get; set; }
         public List<ProfileFrame> profileFrames { get; set; }
 
         public MainWindow()
@@ -50,13 +50,13 @@ namespace DotAgro
                 ScreenSalary.Children.Add(new Frame() {Margin = new Thickness(2, 5, 2, 5), Height = 120, Width = 525, Content = p });
             }
 
-            foreach(Headquarters h in headquartersList)
+            foreach(Headquarter h in headquartersList)
             {
                 HeadquartersSelect.Items.Add(new ComboBoxItem { Content = h.name, Tag = h.id_headquarter });
             }
             HeadquartersSelect.SelectedIndex = 0;
 
-            foreach(Services s in servicesList)
+            foreach(Service s in servicesList)
             {
                 ServicesSelect.Items.Add(new ComboBoxItem { Content = s.name, Tag = s.id_service });
             }

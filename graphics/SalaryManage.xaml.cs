@@ -26,7 +26,7 @@ namespace DotAgro.graphics
         MainWindow mainWindow;
         BitmapImage image;
         DataAdmin data;
-        Salaryman salaryman;
+        Salary salaryman;
         public SalaryEdit editSalary { get; set; }
 
         public SalaryManage()
@@ -40,7 +40,7 @@ namespace DotAgro.graphics
 
         public void Initialization()
         {
-            foreach (Salaryman salary in mainWindow.salarymanList)
+            foreach (Salary salary in mainWindow.salarymanList)
             {
                 salarySelect.Items.Add(new ComboBoxItem { Content = $"{salary.firstName} {salary.lastName}", Tag = salary });
             }
@@ -58,7 +58,7 @@ namespace DotAgro.graphics
             if((ComboBoxItem)salarySelect.SelectedItem != null)
             {
                 image = new BitmapImage();
-                salaryman = (Salaryman)((ComboBoxItem)salarySelect.SelectedItem).Tag;
+                salaryman = (Salary)((ComboBoxItem)salarySelect.SelectedItem).Tag;
 
                 firstName.Text = salaryman.firstName;
                 lastName.Text = salaryman.lastName;
@@ -103,7 +103,7 @@ namespace DotAgro.graphics
         {
             if(salaryman != null && editSalary == null)
             {
-                editSalary = new SalaryEdit((Salaryman)((ComboBoxItem)salarySelect.SelectedItem).Tag);
+                editSalary = new SalaryEdit((Salary)((ComboBoxItem)salarySelect.SelectedItem).Tag);
                 editSalary.Show();
             }
         }
