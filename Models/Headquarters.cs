@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DotAgro.Models
 {
-    public class Headquarter
+    public class Headquarters
     {
         public int Id { get; set; }
         public string City { get; set; }

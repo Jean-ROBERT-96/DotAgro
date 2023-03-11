@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DotAgro.Services.Initialization
 {
-    public class HeadquarterInit : IDataInit<Headquarter>
+    public class HeadquarterInit : IDataInit<Headquarters>
     {
         private readonly IDataConnect _dbConnect;
 
@@ -19,13 +19,13 @@ namespace DotAgro.Services.Initialization
             _dbConnect = dbConnect;
         }
 
-        public ObservableCollection<Headquarter>? DataInitialization()
+        public ObservableCollection<Headquarters>? DataInitialization()
         {
             var result = _dbConnect.DataGet("Headquarter").Result;
 
             if (!String.IsNullOrEmpty(result))
             {
-                var content = JsonConvert.DeserializeObject<ObservableCollection<Headquarter>>(result);
+                var content = JsonConvert.DeserializeObject<ObservableCollection<Headquarters>>(result);
                 return content;
             }
 

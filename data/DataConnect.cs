@@ -33,38 +33,32 @@ namespace DotAgro.Data
             }
         }
 
-        public async Task<string> DataPost(object item, string args)
+        public async Task<HttpResponseMessage> DataPost(object item, string args)
         {
             using(var client = new HttpClient())
             {
                 client.BaseAddress = _url;
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(args, content);
-
-                return response.StatusCode.ToString();
+                return await client.PostAsync(args, content);
             }
         }
 
-        public async Task<string> DataPut(object item, string args)
+        public async Task<HttpResponseMessage> DataPut(object item, string args)
         {
             using(var client = new HttpClient())
             {
                 client.BaseAddress = _url;
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
-                var response = await client.PutAsync(args, content);
-
-                return response.StatusCode.ToString();
+                return await client.PutAsync(args, content);
             }
         }
 
-        public async Task<string> DataDelete(int id)
+        public async Task<HttpResponseMessage> DataDelete(string args, int id)
         {
             using(var client = new HttpClient())
             {
                 client.BaseAddress = _url;
-                var response = await client.DeleteAsync(id.ToString());
-
-                return response.StatusCode.ToString();
+                return await client.DeleteAsync($"{args}/{id}");
             }
         }
     }

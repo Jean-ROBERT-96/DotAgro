@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace DotAgro.Services.Initialization
 {
-    public class ServiceInit : IDataInit<Service>
+    public class ServiceInit : IDataInit<Models.Services>
     {
         private readonly IDataConnect _dbConnect;
 
@@ -19,13 +19,13 @@ namespace DotAgro.Services.Initialization
             _dbConnect = dbConnect;
         }
 
-        public ObservableCollection<Service>? DataInitialization()
+        public ObservableCollection<Models.Services>? DataInitialization()
         {
             var result = _dbConnect.DataGet("Service").Result;
 
             if (!String.IsNullOrEmpty(result))
             {
-                var content = JsonConvert.DeserializeObject<ObservableCollection<Service>>(result);
+                var content = JsonConvert.DeserializeObject<ObservableCollection<Models.Services>>(result);
                 return content;
             }
 
