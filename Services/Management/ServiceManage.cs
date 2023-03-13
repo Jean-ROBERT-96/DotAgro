@@ -13,7 +13,7 @@ namespace DotAgro.Services.Management
     public class ServiceManage : IDataManage<Models.Services>
     {
         private readonly IDataConnect _dbConnect;
-        private const string type = "Services";
+        private const string type = "Service";
 
         public ServiceManage(IDataConnect dbConnect)
         {

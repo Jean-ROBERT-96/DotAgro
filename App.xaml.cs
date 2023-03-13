@@ -44,11 +44,16 @@ namespace DotAgro
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            MainWindow mainWindow = serviceProvider.GetService<MainWindow>();
-            mainWindow.SalaryContext = serviceProvider.GetService<SalaryViewModel>();
-            mainWindow.ServiceContext = serviceProvider.GetService<ServiceViewModel>();
-            mainWindow.HeadquarterContext = serviceProvider.GetService<HeadquarterViewModel>();
-            mainWindow.Show();
+            MainWindow main = serviceProvider.GetService<MainWindow>();
+            main.SalaryContext = serviceProvider.GetService<SalaryViewModel>();
+            main.ServiceContext = serviceProvider.GetService<ServiceViewModel>();
+            main.HeadquarterContext = serviceProvider.GetService<HeadquarterViewModel>();
+
+            main.SalaryContext.InitValue();
+            main.ServiceContext.InitValue();
+            main.HeadquarterContext.InitValue();
+
+            main.Show();
         }
     }
 }

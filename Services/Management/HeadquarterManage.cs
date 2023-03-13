@@ -13,7 +13,7 @@ namespace DotAgro.Services.Management
     public class HeadquarterManage : IDataManage<Headquarters>
     {
         private readonly IDataConnect _dbConnect;
-        private const string type = "Headquarters";
+        private const string type = "Headquarter";
 
         public HeadquarterManage(IDataConnect dbConnect)
         {

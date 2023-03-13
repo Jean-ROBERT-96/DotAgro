@@ -15,14 +15,14 @@ namespace DotAgro.Data
 {
     public class DataConnect : IDataConnect
     {
-        private readonly Uri _url = new("http://dotapi:9292/api/");
+        private const string _url = "http://dotapi.fr:9292/api/";
 
         public async Task<string?> DataGet(string args)
         {
             using(var client = new HttpClient())
             {
-                client.BaseAddress = _url;
-                var response = await client.GetAsync(args);
+                client.BaseAddress = new Uri(_url);
+                var response = await Task.WhenAny(client.GetAsync(args)).Result;
                 if(response.IsSuccessStatusCode)
                 {
                     return response.Content.ReadAsStringAsync().Result;
@@ -36,9 +36,9 @@ namespace DotAgro.Data
         {
             using(var client = new HttpClient())
             {
-                client.BaseAddress = _url;
+                client.BaseAddress = new Uri(_url);
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
-                return await client.PostAsync(args, content);
+                return await Task.WhenAny(client.PostAsync(args, content)).Result;
             }
         }
 
@@ -46,9 +46,9 @@ namespace DotAgro.Data
         {
             using(var client = new HttpClient())
             {
-                client.BaseAddress = _url;
+                client.BaseAddress = new Uri(_url);
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
-                return await client.PutAsync(args, content);
+                return await Task.WhenAny(client.PutAsync(args, content)).Result;
             }
         }
 
@@ -56,8 +56,8 @@ namespace DotAgro.Data
         {
             using(var client = new HttpClient())
             {
-                client.BaseAddress = _url;
-                return await client.DeleteAsync($"{args}/{id}");
+                client.BaseAddress = new Uri(_url);
+                return await Task.WhenAny(client.DeleteAsync($"{args}/{id}")).Result;
             }
         }
     }
