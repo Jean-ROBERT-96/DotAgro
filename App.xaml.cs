@@ -34,6 +34,7 @@ namespace DotAgro
             services.AddTransient<IDataManage<Salary>, SalaryManage>();
             services.AddTransient<IDataManage<Models.Services>, ServiceManage>();
             services.AddTransient<IDataManage<Headquarters>, HeadquarterManage>();
+            services.AddTransient<IDataAdmin, AdminManage>();
 
             services.AddSingleton<MainWindow>();
 
@@ -48,6 +49,7 @@ namespace DotAgro
             main.SalaryContext = serviceProvider.GetService<SalaryViewModel>();
             main.ServiceContext = serviceProvider.GetService<ServiceViewModel>();
             main.HeadquarterContext = serviceProvider.GetService<HeadquarterViewModel>();
+            main.AdminContext = serviceProvider.GetService<AdminViewModel>();
 
             main.SalaryContext.InitValue();
             main.ServiceContext.InitValue();

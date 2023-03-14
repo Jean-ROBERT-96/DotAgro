@@ -24,6 +24,7 @@ namespace DotAgro
         public SalaryViewModel SalaryContext { get; set; }
         public ServiceViewModel ServiceContext { get; set; }
         public HeadquarterViewModel HeadquarterContext { get; set; }
+        public AdminViewModel AdminContext { get; set; }
 
         public MainWindow()
         {
