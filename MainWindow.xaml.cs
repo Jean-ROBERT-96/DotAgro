@@ -21,6 +21,8 @@ namespace DotAgro
 {
     public partial class MainWindow : Window
     {
+        private bool _adminMode = false;
+
         public SalaryViewModel SalaryContext { get; set; }
         public ServiceViewModel ServiceContext { get; set; }
         public HeadquarterViewModel HeadquarterContext { get; set; }
