@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotAgro.Dialogs"
         mc:Ignorable="d"
-        Title="SalaryManager" Height="450" Width="800">
+        Title="SalaryManager" Height="400" Width="500">
     <Grid>
-        
+        <StackPanel>
+            <TextBlock Margin="0,20,0,20" TextAlignment="Center" Text="Salarié"/>
+            <DockPanel Margin="5,2,5,2">
+                <Label Content="Nom : " Width="75"/>
+                <TextBox x:Name="lastnameBox" Margin="5"/>
+            </DockPanel>
+            <DockPanel Margin="5,2,5,2">
+                <Label Content="Prénom : " Width="75"/>
+                <TextBox x:Name="firstnameBox" Margin="5"/>
+            </DockPanel>
+            <DockPanel Margin="5,2,5,2">
+                <Label Content="Genre : " Width="75"/>
+                <ComboBox x:Name="genderBox" Margin="5">
+                    <ComboBoxItem Content="Homme" Tag="0" IsSelected="True"/>
+                    <ComboBoxItem Content="Femme" Tag="1"/>
+                </ComboBox>
+            </DockPanel>
+            <DockPanel Margin="5,2,5,2">
+                <Label Content="Mail : " Width="75"/>
+                <TextBox x:Name="mailBox" Margin="5"/>
+            </DockPanel>
+            <DockPanel Margin="5,2,5,2">
+                <Label Content="Téléphone : " Width="75"/>
+                <TextBox x:Name="phoneBox" Margin="5"/>
+            </DockPanel>
+            <DockPanel Margin="5,2,5,2">
+                <Label Content="Image : " Width="75"/>
+                <TextBox x:Name="imageBox" Margin="5"/>
+            </DockPanel>
+            <DockPanel Margin="5,2,5,2">
+                <Label Content="Siège : " Width="75"/>
+                <ComboBox x:Name="headquarterCombo" Margin="5"/>
+            </DockPanel>
+            <DockPanel Margin="5,2,5,2">
+                <Label Content="Service : " Width="75"/>
+                <ComboBox x:Name="serviceCombo" Margin="5"/>
+            </DockPanel>
+            <DockPanel Margin="20" HorizontalAlignment="Center">
+                <Button x:Name="quitClick" Content="Quitter" Width="150" Margin="30,0,30,0"/>
+                <Button x:Name="validClick" Content="Valider" Width="150" Margin="30,0,30,0"/>
+            </DockPanel>
+        </StackPanel>
     </Grid>
 </Window>
