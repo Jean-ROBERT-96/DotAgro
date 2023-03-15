@@ -4,9 +4,60 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotAgro"
+        xmlns:models="clr-namespace:DotAgro.Models"
+        xmlns:converter="clr-namespace:DotAgro.Services.Converter"
         mc:Ignorable="d"
-        Title="DotAggro : Recherche de salarié" Height="550" Width="750" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/Ressources/list.png">
+        Title="DotAggro : Recherche de salarié" Height="650" Width="1000" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/Ressources/list.png">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.AdminCommand}" Executed="AdminMode_Executed"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Command="{x:Static local:MainWindow.AdminCommand}" Gesture="CTRL+K"/>
+    </Window.InputBindings>
+    <Window.Resources>
+        <converter:AdminConverter x:Key="AdminConverter"/>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Column="0" x:Name="gridView" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Prenom" Binding="{Binding FirsName}"/>
+                <DataGridTextColumn Header="Genre" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Header="Mail" Binding="{Binding Mail}"/>
+                <DataGridTextColumn Header="Téléphone" Binding="{Binding Phone}"/>
+                <DataGridTextColumn Header="Siège" Binding="{Binding IdHeaduarterNavigation.City}"/>
+                <DataGridTextColumn Header="Service" Binding="{Binding IdServiceNavigation.Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DockPanel Grid.Column="1" Background="DarkViolet">
+            <StackPanel DockPanel.Dock="Top" Margin="5">
+                <Label Content="Rechercher un salarié : " Foreground="White" HorizontalContentAlignment="Center"/>
+                <TextBox x:Name="searchBox" Margin="0,3,0,3"/>
+                <ComboBox x:Name="headSearchCombo" Margin="0,3,0,3">
+                    <ComboBox.Resources>
+                        <DataTemplate DataType="{x:Type models:Headquarters}">
+                            <ComboBoxItem Content="{Binding City}"/>
+                        </DataTemplate>
+                    </ComboBox.Resources>
+                </ComboBox>
+                <ComboBox x:Name="servSearchCombo" Margin="0,3,0,3">
+                    <ComboBox.Resources>
+                        <DataTemplate DataType="{x:Type models:Services}">
+                            <ComboBoxItem Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ComboBox.Resources>
+                </ComboBox>
+                <Button Content="Rechercher" Margin="0,3,0,3"/>
+            </StackPanel>
+            <Button DockPanel.Dock="Bottom" Content="Actualiser" Margin="5" VerticalAlignment="Bottom"/>
+            <StackPanel DockPanel.Dock="Bottom" Margin="5" VerticalAlignment="Bottom" Visibility="{Binding AdminMode, Converter={StaticResource AdminConverter}}">
+                <Button Content="Gestionnaire des services" Margin="0,3,0,3"/>
+                <Button Content="Gestionnaire des sièges" Margin="0,3,0,3"/>
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </Window>

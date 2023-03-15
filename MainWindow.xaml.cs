@@ -16,12 +16,15 @@ using System.Collections.ObjectModel;
 using DotAgro.ViewModels;
 using DotAgro.Interfaces;
 using DotAgro.Models;
+using DotAgro.Dialogs;
 
 namespace DotAgro
 {
     public partial class MainWindow : Window
     {
-        private bool _adminMode = false;
+        public bool AdminMode = false;
+
+        public static RoutedCommand AdminCommand = new();
 
         public SalaryViewModel SalaryContext { get; set; }
         public ServiceViewModel ServiceContext { get; set; }
@@ -31,6 +34,24 @@ namespace DotAgro
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public void ContextLoaded()
+        {
+            gridView.ItemsSource = SalaryContext?.SalariesList;
+            headSearchCombo.ItemsSource = HeadquarterContext?.HeadquartersList;
+            servSearchCombo.ItemsSource = ServiceContext?.ServicesList;
+        }
+
+        private void AdminMode_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if(!AdminMode)
+                AdminMode = AdminConnect.Show();
+            else
+            {
+                if (MessageBox.Show("Voullez-vous vous déconnecter?", "Déconnexion", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    AdminMode = false;
+            }
         }
     }
 }

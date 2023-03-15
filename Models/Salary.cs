@@ -17,5 +17,7 @@ namespace DotAgro.Models
         public string Image { get; set; }
         public int IdHeadquarter { get; set; }
         public int IdService { get; set; }
+        public Headquarters IdHeadquarterNavigation { get; set; }
+        public Services IdServiceNavigation { get; set; }
     }
 }

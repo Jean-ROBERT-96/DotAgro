@@ -41,6 +41,7 @@ namespace DotAgro
             services.AddSingleton<SalaryViewModel>();
             services.AddSingleton<ServiceViewModel>();
             services.AddSingleton<HeadquarterViewModel>();
+            services.AddSingleton<AdminViewModel>();
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
@@ -54,6 +55,8 @@ namespace DotAgro
             main.SalaryContext.InitValue();
             main.ServiceContext.InitValue();
             main.HeadquarterContext.InitValue();
+
+            main.ContextLoaded();
 
             main.Show();
         }
