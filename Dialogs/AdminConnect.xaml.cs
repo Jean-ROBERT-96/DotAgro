@@ -46,7 +46,7 @@ namespace DotAgro.Dialogs
                     MessageBox.Show("Identifiant ou mot de passe incorrect.", "Erreur de connexion", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
-                MessageBox.Show("Veuillez remplir les champs avant de continuer.", "Champs de connexion vide", MessageBoxButton.OK, MessageBoxImage.Stop);
+                MessageBox.Show("Veuillez remplir les champs avant de continuer.", "Champs vide", MessageBoxButton.OK, MessageBoxImage.Stop);
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotAgro"
         xmlns:models="clr-namespace:DotAgro.Models"
-        xmlns:converter="clr-namespace:DotAgro.Services.Converter"
         mc:Ignorable="d"
         Title="DotAggro : Recherche de salarié" Height="650" Width="1000" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/Ressources/list.png">
     <Window.CommandBindings>
@@ -14,9 +13,6 @@
     <Window.InputBindings>
         <KeyBinding Command="{x:Static local:MainWindow.AdminCommand}" Gesture="CTRL+K"/>
     </Window.InputBindings>
-    <Window.Resources>
-        <converter:AdminConverter x:Key="AdminConverter"/>
-    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -54,7 +50,8 @@
                 <Button Content="Rechercher" Margin="0,3,0,3"/>
             </StackPanel>
             <Button DockPanel.Dock="Bottom" Content="Actualiser" Margin="5" VerticalAlignment="Bottom"/>
-            <StackPanel DockPanel.Dock="Bottom" Margin="5" VerticalAlignment="Bottom" Visibility="{Binding AdminMode, Converter={StaticResource AdminConverter}}">
+            <StackPanel x:Name="adminButton" DockPanel.Dock="Bottom" Margin="5" VerticalAlignment="Bottom" Visibility="Hidden">
+                <Button Content="Ajouter un salarié" Margin="0,3,0,3"/>
                 <Button Content="Gestionnaire des services" Margin="0,3,0,3"/>
                 <Button Content="Gestionnaire des sièges" Margin="0,3,0,3"/>
             </StackPanel>

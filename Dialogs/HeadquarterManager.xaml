@@ -14,8 +14,8 @@
                 <TextBox x:Name="cityBox" Margin="5"/>
             </DockPanel>
             <DockPanel Margin="20" HorizontalAlignment="Center">
-                <Button x:Name="cancelClick" Content="Annuler" Width="150" Margin="30,0,30,0"/>
-                <Button x:Name="validClick" Content="Valider" Width="150" Margin="30,0,30,0"/>
+                <Button x:Name="cancelClick" Click="CancelButton_Click" Content="Annuler" Width="150" Margin="30,0,30,0"/>
+                <Button x:Name="validClick" Click="VaildButton_Click" Content="Valider" Width="150" Margin="30,0,30,0"/>
             </DockPanel>
         </StackPanel>
     </Grid>
