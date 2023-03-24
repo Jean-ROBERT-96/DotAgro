@@ -39,8 +39,8 @@ namespace DotAgro.Dialogs
         {
             if (!String.IsNullOrEmpty(mailBox.Text) || !String.IsNullOrEmpty(passBox.Password))
             {
-                _connected = _main.AdminContext.AdminConnection(mailBox.Text, passBox.Password);
-                if (_connected)
+                _main.AdminContext.AdminConnection(mailBox.Text, passBox.Password);
+                if (_main.AdminContext.AdminMode)
                     Close();
                 else
                     MessageBox.Show("Identifiant ou mot de passe incorrect.", "Erreur de connexion", MessageBoxButton.OK, MessageBoxImage.Error);

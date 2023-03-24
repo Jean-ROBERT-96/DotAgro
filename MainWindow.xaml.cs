@@ -22,10 +22,7 @@ namespace DotAgro
 {
     public partial class MainWindow : Window
     {
-        public bool AdminMode { get; set; } = false;
-
         public static RoutedCommand AdminCommand = new();
-
         public SalaryViewModel SalaryContext { get; set; }
         public ServiceViewModel ServiceContext { get; set; }
         public HeadquarterViewModel HeadquarterContext { get; set; }
@@ -34,7 +31,7 @@ namespace DotAgro
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = AdminMode;
+            DataContext = this;
         }
 
         public void ContextLoaded()
@@ -46,19 +43,14 @@ namespace DotAgro
 
         private void AdminMode_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            if(!AdminMode)
+            if (!AdminContext.AdminMode)
             {
-                AdminMode = AdminConnect.Show();
-                if(AdminMode)
-                    adminButton.Visibility = Visibility.Visible;
+                AdminConnect.Show();
             }
             else
             {
                 if (MessageBox.Show("Voullez-vous vous déconnecter?", "Déconnexion", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                {
-                    AdminMode = false;
-                    adminButton.Visibility = Visibility.Hidden;
-                }
+                    AdminContext.AdminMode = false;
             }
         }
     }

@@ -11,20 +11,29 @@ namespace DotAgro.ViewModels
     public class AdminViewModel : BaseViewModels
     {
         private readonly IDataAdmin _dataManage;
+        private bool _adminMode = false;
+
+        public bool AdminMode
+        {
+            get => _adminMode;
+            set
+            {
+                _adminMode = value;
+                NotifyPropertyChanged(nameof(AdminMode));
+            }
+        }
 
         public AdminViewModel(IDataAdmin dataManage)
         {
             _dataManage = dataManage;
         }
 
-        public bool AdminConnection(string mail, string password)
+        public void AdminConnection(string mail, string password)
         {
             if (_dataManage.AdminConnect(mail, password))
-            {
-                return true;
-            }
+                AdminMode = true;
             else
-                return false;
+                AdminMode = false;
         }
     }
 }
