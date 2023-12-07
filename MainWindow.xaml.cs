@@ -41,6 +41,27 @@ namespace DotAgro
             servSearchCombo.ItemsSource = ServiceContext?.ServicesList;
         }
 
+        private void AddSalary(object sender, RoutedEventArgs e)
+        {
+            SalaryManager.Show();
+        }
+
+        private void GridDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (AdminContext.AdminMode)
+                SalaryManager.Show((Salary)gridView.SelectedItem);
+        }
+
+        private void ServiceManage(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void HeadquarterManage(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void AdminMode_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             if (!AdminContext.AdminMode)

@@ -22,15 +22,15 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Column="0" x:Name="gridView" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Grid.Column="0" x:Name="gridView" MouseDoubleClick="GridDoubleClick" SelectionMode="Single" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nom" Binding="{Binding LastName}"/>
-                <DataGridTextColumn Header="Prenom" Binding="{Binding FirsName}"/>
-                <DataGridTextColumn Header="Genre" Binding="{Binding Gender}"/>
-                <DataGridTextColumn Header="Mail" Binding="{Binding Mail}"/>
-                <DataGridTextColumn Header="Téléphone" Binding="{Binding Phone}"/>
-                <DataGridTextColumn Header="Siège" Binding="{Binding IdHeaduarterNavigation.City}"/>
-                <DataGridTextColumn Header="Service" Binding="{Binding IdServiceNavigation.Name}"/>
+                <DataGridTextColumn Width="*" Header="Nom" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Width="*" Header="Prenom" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Width="80" Header="Genre" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Width="*" Header="Mail" Binding="{Binding Mail}"/>
+                <DataGridTextColumn Width="*" Header="Téléphone" Binding="{Binding Phone}"/>
+                <DataGridTextColumn Width="*" Header="Siège" Binding="{Binding HeadquarterName}"/>
+                <DataGridTextColumn Width="*" Header="Service" Binding="{Binding ServiceName}"/>
             </DataGrid.Columns>
         </DataGrid>
         <DockPanel Grid.Column="1" Background="DarkViolet">
@@ -40,14 +40,14 @@
                 <ComboBox x:Name="headSearchCombo" Margin="0,3,0,3">
                     <ComboBox.Resources>
                         <DataTemplate DataType="{x:Type models:Headquarters}">
-                            <ComboBoxItem Content="{Binding City}"/>
+                            <TextBlock Text="{Binding City}"/>
                         </DataTemplate>
                     </ComboBox.Resources>
                 </ComboBox>
                 <ComboBox x:Name="servSearchCombo" Margin="0,3,0,3">
                     <ComboBox.Resources>
                         <DataTemplate DataType="{x:Type models:Services}">
-                            <ComboBoxItem Content="{Binding Name}"/>
+                            <TextBlock Text="{Binding Name}"/>
                         </DataTemplate>
                     </ComboBox.Resources>
                 </ComboBox>
@@ -55,9 +55,9 @@
             </StackPanel>
             <Button DockPanel.Dock="Bottom" Content="Actualiser" Margin="5" VerticalAlignment="Bottom"/>
             <StackPanel DockPanel.Dock="Bottom" Margin="5" VerticalAlignment="Bottom" Visibility="{Binding AdminContext.AdminMode, Converter={StaticResource AdminConverter}}">
-                <Button Content="Ajouter un salarié" Margin="0,3,0,3"/>
-                <Button Content="Gestionnaire des services" Margin="0,3,0,3"/>
-                <Button Content="Gestionnaire des sièges" Margin="0,3,0,3"/>
+                <Button Content="Ajouter un salarié" Click="AddSalary" Margin="0,3,0,3"/>
+                <Button Content="Gestionnaire des services" Click="ServiceManage" Margin="0,3,0,3"/>
+                <Button Content="Gestionnaire des sièges" Click="HeadquarterManage"  Margin="0,3,0,3"/>
             </StackPanel>
         </DockPanel>
     </Grid>

@@ -23,7 +23,7 @@ namespace DotAgro
 
         public App()
         {
-            ServiceCollection services = new ServiceCollection();
+            ServiceCollection services = new();
             ConfigureServices(services);
             serviceProvider = services.BuildServiceProvider();
         }

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotAgro.Dialogs"
+        xmlns:models="clr-namespace:DotAgro.Models"
         mc:Ignorable="d"
         Title="SalaryManager" Height="400" Width="500">
     <Grid>
@@ -11,42 +12,54 @@
             <TextBlock Margin="0,20,0,20" TextAlignment="Center" Text="Salarié"/>
             <DockPanel Margin="5,2,5,2">
                 <Label Content="Nom : " Width="75"/>
-                <TextBox x:Name="lastnameBox" Margin="5"/>
+                <TextBox x:Name="lastnameBox" Text="{Binding LastName}" Margin="5"/>
             </DockPanel>
             <DockPanel Margin="5,2,5,2">
                 <Label Content="Prénom : " Width="75"/>
-                <TextBox x:Name="firstnameBox" Margin="5"/>
+                <TextBox x:Name="firstnameBox" Text="{Binding FirstName}" Margin="5"/>
             </DockPanel>
             <DockPanel Margin="5,2,5,2">
                 <Label Content="Genre : " Width="75"/>
-                <ComboBox x:Name="genderBox" Margin="5">
-                    <ComboBoxItem Content="Homme" Tag="0" IsSelected="True"/>
-                    <ComboBoxItem Content="Femme" Tag="1"/>
+                <ComboBox x:Name="genderBox" SelectedItem="{Binding Gender}" Margin="5">
+                    <ComboBoxItem Content="Homme" Tag="Homme" IsSelected="True"/>
+                    <ComboBoxItem Content="Femme" Tag="Femme"/>
                 </ComboBox>
             </DockPanel>
             <DockPanel Margin="5,2,5,2">
                 <Label Content="Mail : " Width="75"/>
-                <TextBox x:Name="mailBox" Margin="5"/>
+                <TextBox x:Name="mailBox" Text="{Binding Mail}" Margin="5"/>
             </DockPanel>
             <DockPanel Margin="5,2,5,2">
                 <Label Content="Téléphone : " Width="75"/>
-                <TextBox x:Name="phoneBox" Margin="5"/>
+                <TextBox x:Name="phoneBox" Text="{Binding Phone}" Margin="5"/>
             </DockPanel>
             <DockPanel Margin="5,2,5,2">
                 <Label Content="Image : " Width="75"/>
-                <TextBox x:Name="imageBox" Margin="5"/>
+                <TextBox x:Name="imageBox" Text="{Binding Image}" Margin="5"/>
             </DockPanel>
             <DockPanel Margin="5,2,5,2">
                 <Label Content="Siège : " Width="75"/>
-                <ComboBox x:Name="headquarterCombo" Margin="5"/>
+                <ComboBox x:Name="headquarterCombo" SelectedItem="{Binding IdHeadquarterNavigation}" Margin="5">
+                    <ComboBox.Resources>
+                        <DataTemplate DataType="{x:Type models:Headquarters}">
+                            <TextBlock Text="{Binding City}"/>
+                        </DataTemplate>
+                    </ComboBox.Resources>
+                </ComboBox>
             </DockPanel>
             <DockPanel Margin="5,2,5,2">
                 <Label Content="Service : " Width="75"/>
-                <ComboBox x:Name="serviceCombo" Margin="5"/>
+                <ComboBox x:Name="serviceCombo" SelectedItem="{Binding IdServiceNavigation}" Margin="5">
+                    <ComboBox.Resources>
+                        <DataTemplate DataType="{x:Type models:Services}">
+                            <TextBlock Text="{Binding  Name}"/>
+                        </DataTemplate>
+                    </ComboBox.Resources>
+                </ComboBox>
             </DockPanel>
             <DockPanel Margin="20" HorizontalAlignment="Center">
-                <Button x:Name="cancelClick" Content="Annuler" Width="150" Margin="30,0,30,0"/>
-                <Button x:Name="validClick" Content="Valider" Width="150" Margin="30,0,30,0"/>
+                <Button x:Name="cancelClick" Content="Annuler" Click="Cancel" Width="150" Margin="30,0,30,0"/>
+                <Button x:Name="validClick" Content="Valider" Click="Valid" Width="150" Margin="30,0,30,0"/>
             </DockPanel>
         </StackPanel>
     </Grid>

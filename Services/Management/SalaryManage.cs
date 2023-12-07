@@ -51,7 +51,7 @@ namespace DotAgro.Services.Management
 
         public bool EditData(Salary item)
         {
-            if (_dbConnect.DataPut(item, type).IsCompletedSuccessfully)
+            if (_dbConnect.DataPut(item, $"{type}/{item.Id}").IsCompletedSuccessfully)
                 return true;
 
             return false;

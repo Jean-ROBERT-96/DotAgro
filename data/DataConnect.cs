@@ -15,7 +15,8 @@ namespace DotAgro.Data
 {
     public class DataConnect : IDataConnect
     {
-        private const string _url = "http://dotapi.fr:9292/api/";
+        //private const string _url = "http://dotapi.fr:9292/api/";
+        private const string _url = "https://localhost:7256/api/";
 
         public async Task<string?> DataGet(string args)
         {
@@ -38,7 +39,9 @@ namespace DotAgro.Data
             {
                 client.BaseAddress = new Uri(_url);
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
-                return await Task.WhenAny(client.PostAsync(args, content)).Result;
+                var rep = await Task.WhenAny(client.PostAsync(args, content)).Result;
+                var toto = rep.Content.ReadAsStringAsync().Result;
+                return rep;
             }
         }
 
@@ -48,7 +51,9 @@ namespace DotAgro.Data
             {
                 client.BaseAddress = new Uri(_url);
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
-                return await Task.WhenAny(client.PutAsync(args, content)).Result;
+                var rep = await Task.WhenAny(client.PutAsync(args, content)).Result;
+                var toto = rep.Content.ReadAsStringAsync().Result;
+                return rep;
             }
         }
 
@@ -57,7 +62,9 @@ namespace DotAgro.Data
             using(var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(_url);
-                return await Task.WhenAny(client.DeleteAsync($"{args}/{id}")).Result;
+                var rep = await Task.WhenAny(client.DeleteAsync($"{args}/{id}")).Result;
+                var toto = rep.Content.ReadAsStringAsync().Result;
+                return rep;
             }
         }
     }
