@@ -52,9 +52,9 @@ namespace DotAgro
             main.HeadquarterContext = serviceProvider.GetService<HeadquarterViewModel>();
             main.AdminContext = serviceProvider.GetService<AdminViewModel>();
 
-            main.SalaryContext.InitValue();
+            /*main.SalaryContext.InitValue();
             main.ServiceContext.InitValue();
-            main.HeadquarterContext.InitValue();
+            main.HeadquarterContext.InitValue();*/
 
             main.ContextLoaded();
 
